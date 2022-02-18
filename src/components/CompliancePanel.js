@@ -23,7 +23,10 @@ class Bar extends React.Component {
                 break;
             case 2:
                 color = "green"
-                break;   
+                break;
+            default:
+                color = "black"
+                break;
         }
         return (
             <div className="bar-cont">

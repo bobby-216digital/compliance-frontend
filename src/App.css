@@ -1,7 +1,63 @@
 * {
   --light: #F1FDFF;
+  --blue: #304DA0;
+  --lightblue: #54CBF5;
   --shadow: 0px 1px 4px rgba(21, 24, 50, .08);
   --issue-height: 6px;
+}
+
+body {
+  background-color: var(--light);
+}
+
+input, label {
+  display: block;
+}
+
+svg * {
+  stroke-width: 2px;
+  shape-rendering: "geometricPrecision";
+  font-size: 12px;
+}
+
+svg text {
+  z-index: 2;
+  position: relative;
+}
+
+svg rect {
+  z-index: 1;
+  position: relative;
+  fill: white;
+}
+
+.guideline {
+  stroke: #AAA;
+}
+
+.legendItem {
+  display: inline-block;
+  margin: 0px 12px;
+}
+
+.tag {
+  border-radius: 100px;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  margin: 0px 4px;
+}
+
+.a {
+  background-color: #304DA0;
+}
+
+.aa {
+  background-color: #54CBF5;
+}
+
+.aaa {
+  background-color: #CCC;
 }
 
 .card {
@@ -9,7 +65,6 @@
   border-radius: 6px;
   box-shadow: var(--shadow);
   margin: 12px;
-  width: 500px;
   display: inline-block;
   vertical-align: top;
   background-color: white;
@@ -18,7 +73,8 @@
 
 main {
   padding: 24px;
-  background-color: var(--light);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .bar-cont {

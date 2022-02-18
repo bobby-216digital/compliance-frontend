@@ -4,6 +4,7 @@ import React from 'react';
 import TextCard from './components/TextCard'
 import IssuePanel from './components/IssuePanel'
 import CompliancePanel from './components/CompliancePanel'
+import ComplianceGraph from './components/ComplianceGraph'
 import { useParams } from 'react-router-dom';
 
 function App() {
@@ -39,46 +40,67 @@ class Panel extends React.Component {
   }
 
   initData(data) {
+    let sortsite = JSON.parse(decodeURIComponent(data.sortsite[data.sortsite.length - 1].issues));
+    console.log(sortsite);
     let obj = {}
     let levels = [0, 0, 0];
-    data.sortsite[data.sortsite.length - 1].issues.map((x) => {
-      if(obj[x.guideline]) {
-        obj[x.guideline].push(x)
-      } else {
-        obj[x.guideline] = [x]
-        if (x.guideline.includes(" A ")) {
-          levels[0]++;
-        } else if (x.guideline.includes(" AA ")) {
-          levels[1]++;
-        } else if (x.guideline.includes(" AAA ")) {
-          levels[2]++;
-        }
-      }
-    })
+    if (sortsite.length !== 0) {
+      Object.keys(sortsite).map((x, i) => {
+        levels[i] = Object.keys(sortsite[x]).length;
+        Object.keys(sortsite[x]).map((n) => {
+          if(obj[Object.keys(sortsite)[i]]) {
+            obj[Object.keys(sortsite)[i]].push(n)
+          } else {
+            obj[Object.keys(sortsite)[i]] = [n]
+          }
+          return true
+        })
+        return true
+      })
 
-    this.setState({
-      data: data,
-      issues: obj,
-      levels: levels
-    })
+      this.setState({
+        data: data,
+        issues: obj,
+        levels: levels
+      })
+    } else {
+      this.setState({
+        data: data
+      })
+    }
+    
+
+    
   }
 
   render() {
+    console.log(this.state)
     let lastDate, nextDate = "";
     let data = this.state.data;
-    console.log(data);
+
     if (data !== false) {
-      lastDate = new Date(data.sortsite[data.sortsite.length - 1].date).toLocaleDateString();
-      nextDate = new Date((data.sortsite[data.sortsite.length - 1].date + (data.freq * 86400000))).toLocaleDateString();
+      if (data.length === 0) {
+        return (
+          <React.Fragment>
+            <h1>Report for {this.state.data.url}</h1>
+            <div className="card">Awaiting initial scan. Scans may take up to 48 hours to complete.</div>
+          </React.Fragment>
+          
+        )
+      } else {
+        lastDate = new Date(data.sortsite[data.sortsite.length - 1].date).toLocaleDateString();
+        nextDate = new Date((data.sortsite[data.sortsite.length - 1].date + (data.freq * 86400000))).toLocaleDateString();
+      }
     }
     return (
-      <main>
+      <React.Fragment>
         <h1>Report for {this.state.data.url}</h1>
         <TextCard subtext={"Last Scan Date"} text={data ? lastDate : "X/XX/XXXX"} />
         <TextCard subtext={"Next Scan Date"} text={data ? nextDate : "X/XX/XXXX"} />
         <IssuePanel levels={this.state.levels} issues={this.state.issues} />
         <CompliancePanel levels={this.state.levels} />
-      </main>
+        <ComplianceGraph data={data} />
+      </React.Fragment>
     );
   }
 }
