@@ -11,6 +11,7 @@ import Admin from './Admin'
 
 ReactDOM.render(
   <React.StrictMode>
+    <Header />
     <main>
     <Router>
       <Routes>

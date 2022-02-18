@@ -5,6 +5,7 @@ import TextCard from './components/TextCard'
 import IssuePanel from './components/IssuePanel'
 import CompliancePanel from './components/CompliancePanel'
 import ComplianceGraph from './components/ComplianceGraph'
+import Header from './components/Header'
 import { useParams } from 'react-router-dom';
 
 function App() {
