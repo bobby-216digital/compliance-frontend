@@ -8,6 +8,7 @@ import {
 import './index.css';
 import App from './App';
 import Admin from './Admin'
+import Header from './components/Header'
 
 ReactDOM.render(
   <React.StrictMode>

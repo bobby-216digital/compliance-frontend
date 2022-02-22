@@ -1,28 +1,135 @@
+@import url("https://use.typekit.net/cre5xam.css");
+
 * {
   --light: #F1FDFF;
   --blue: #304DA0;
   --lightblue: #54CBF5;
+  --darkblue: #26296D;
   --shadow: 0px 1px 4px rgba(21, 24, 50, .08);
-  --issue-height: 6px;
+  --issue-height: 4px;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--darkblue);
 }
 
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: var(--darkblue) #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--darkblue);
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }
+
 body {
+  background-color: #E8F5F7;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  background-color: var(--darkblue);
+  color: var(--lightblue);
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  margin: 12px 0px;
+  cursor: pointer;
+}
+
+h2 {
+  margin-top: 0px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.odd {
   background-color: var(--light);
+}
+
+.third {
+  width: calc(33% - 24px);
+  max-width: calc(33% - 24px);
+  display: inline-block;
+  vertical-align: top;
+}
+
+.two-thirds {
+  width: calc(66% - 24px);
+  max-width: calc(66% - 24px);
+  display: inline-block;
+  vertical-align: top;
 }
 
 input, label {
   display: block;
 }
 
+header {
+  padding: 18px;
+  background-color: var(--light);
+  border-bottom: 1px solid var(--lightblue);
+}
+
+header svg {
+  margin-right: 8px;
+}
+
+svg {
+  max-width: 100%;
+  height: fit-content;
+}
+
+polyline {
+  filter: drop-shadow(0px 10px 8px rgba(0, 0, 0, 0.2));
+}
+
+.logotext {
+  width: fit-content;
+  display: inline-block;
+}
+
+.logoname {
+  font-size: 30px;
+  color: var(--darkblue);
+  line-height: 1px;
+  font-weight: 600;
+}
+
+.logotag {
+  font-size: 16px;
+  color: var(--lightblue);
+  display: block;
+  font-weight: 600;
+}
+
 svg * {
-  stroke-width: 2px;
+  stroke-width: 4px;
   shape-rendering: "geometricPrecision";
-  font-size: 12px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 svg text {
   z-index: 2;
   position: relative;
+  color: var(--darkblue);
 }
 
 svg rect {
@@ -37,7 +144,7 @@ svg rect {
 
 .legendItem {
   display: inline-block;
-  margin: 0px 12px;
+  margin: 4px 12px;
 }
 
 .tag {
@@ -46,6 +153,8 @@ svg rect {
   height: 18px;
   width: 18px;
   margin: 0px 4px;
+  position: relative;
+  top: 4px;
 }
 
 .a {
@@ -69,22 +178,40 @@ svg rect {
   vertical-align: top;
   background-color: white;
   padding: 24px;
+  max-width: calc(100% - 74px);
+  overflow: hidden;
+  height: fit-content;
+}
+
+.textCard {
+  width: calc(50% - 74px);
 }
 
 main {
   padding: 24px;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
+.compliance {
+  width: calc(66% - 120px);
+}
+
 .bar-cont {
-  width: 120px;
+  width: 108px;
   text-align: center;
   display: inline-block;
 }
 
 .outer-bar-cont {
   position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.overview {
+  display: inline-block;
+  vertical-align: top;
 }
 
 .bar {
@@ -105,7 +232,7 @@ main {
 
 .bar-grid-cont {
   position: absolute;
-  width: 360px;
+  width: 324px;
   height: calc(var(--issue-height) * 40);
 }
 
@@ -118,4 +245,65 @@ main {
 
 .first {
   border-top: none;
+}
+
+.complianceGraph {
+  width: 78%;
+  margin: 0 auto;
+}
+
+.cat {
+  max-width: calc(100% - 40px);
+  float: left;
+}
+
+.numIssues {
+  float: right;
+}
+
+.issue {
+  height: 24px;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.issuePanel h3, .noticePanel h2 {
+  background-color: var(--darkblue);
+  color: white;
+  padding: 8px;
+}
+
+.inner {
+  border-radius: 5px;
+  max-height: 540px;
+  overflow-y: scroll;
+  padding-right: 12px;
+
+}
+
+.svgWrapper {
+  text-align: center;
+  position: relative;
+  top: 32px;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.complianceWrapper {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.compliance {
+  height: 247px;
+}
+
+
+@media screen and (max-width: 800px) {
+  .third, .two-thirds, .card {
+    width: 100%;
+    max-width: calc(100% - 24px);
+  }
 }

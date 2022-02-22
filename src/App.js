@@ -1,11 +1,11 @@
 import './App.css';
 import React from 'react';
+import trustmark from './trustmark.png'
 
 import TextCard from './components/TextCard'
 import IssuePanel from './components/IssuePanel'
 import CompliancePanel from './components/CompliancePanel'
 import ComplianceGraph from './components/ComplianceGraph'
-import Header from './components/Header'
 import { useParams } from 'react-router-dom';
 
 function App() {
@@ -95,12 +95,30 @@ class Panel extends React.Component {
     }
     return (
       <React.Fragment>
-        <h1>Report for {this.state.data.url}</h1>
-        <TextCard subtext={"Last Scan Date"} text={data ? lastDate : "X/XX/XXXX"} />
-        <TextCard subtext={"Next Scan Date"} text={data ? nextDate : "X/XX/XXXX"} />
-        <IssuePanel levels={this.state.levels} issues={this.state.issues} />
-        <CompliancePanel levels={this.state.levels} />
-        <ComplianceGraph data={data} />
+        {/* <h1>Report for {this.state.data.url}</h1> */}
+        <div className="datesTile third">
+          <TextCard subtext={"Last Scan Date"} text={data ? lastDate : "X/XX/XXXX"} />
+          <TextCard subtext={"Next Scan Date"} text={data ? nextDate : "X/XX/XXXX"} />
+          <IssuePanel levels={this.state.levels} issues={this.state.issues} />
+        </div>
+        <div className="two-thirds">
+          <CompliancePanel levels={this.state.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
+          <div className="card third">
+            {data.thresholda < this.state.levels[0] || data.thresholda < this.state.levels[1] ? 
+            <div className="noticePanel">
+              <h2>⚠️ Notice</h2>
+              <p>Your error count has surpassed your risk tolerance threshold. Please <a href="mailto:team@216digital.com">contact us</a> if you would like help remediating these issues.</p>
+            </div> 
+            : 
+            <div className="noticePanel">
+              <h2>🎉 Congratulations!</h2>
+              <p>Your error counts are within your risk tolerance thresholds. Keep up the good work!</p>
+            </div>
+            }
+            <img src={trustmark} alt="Accessibility House Logo" />
+          </div>
+          <ComplianceGraph data={data} />
+        </div>
       </React.Fragment>
     );
   }

@@ -6,32 +6,32 @@ class Bar extends React.Component {
         let hasAlert = "";
         switch (this.props.level) {
             case 0:
-                if (this.props.num >= 10) {
-                    color = "red"
+                if (this.props.num >= parseInt(this.props.thresholda)) {
+                    color = "#26296D"
                     hasAlert = "⚠️";
                 } else {
-                    color = "green"
+                    color = "#26296D"
                 }
                 break;
             case 1:
-                if (this.props.num >= 5) {
-                    color = "red"
+                if (this.props.num >= parseInt(this.props.thresholdaa)) {
+                    color = "#54CBF5"
                     hasAlert = "⚠️";
                 } else {
-                    color = "green"
+                    color = "#54CBF5"
                 }
                 break;
             case 2:
-                color = "green"
+                color = "#CCC"
                 break;
             default:
-                color = "black"
+                color = "#CCC"
                 break;
         }
         return (
             <div className="bar-cont">
                 <div className="bar">
-                    <div className="inner-bar" style={{ height: (this.props.num ? this.props.num * 6 : 0), backgroundColor: (color) }}></div>
+                    <div className="inner-bar" style={{ height: (this.props.num ? this.props.num * 4 : 0), backgroundColor: (color) }}></div>
                 </div>
                 <span>{this.props.name} {hasAlert}</span>
             </div>
@@ -42,28 +42,30 @@ class Bar extends React.Component {
 class CompliancePanel extends React.Component {
     render() {
         return(
-            <div className="card">
+            <div className="card compliance">
                 <h2>Current Compliance Status</h2>
-                <div className="col-40 outer-bar-cont">
-                    <div className="bar-grid-cont">
-                        <div className="line">40</div>
-                        <div className="line">35</div>
-                        <div className="line">30</div>
-                        <div className="line">25</div>
-                        <div className="line">20</div>
-                        <div className="line">15</div>
-                        <div className="line">10</div>
-                        <div className="line">5</div>
-                        <div className="line first"></div>
+                <div className="complianceWrapper">
+                    <div className="outer-bar-cont">
+                        <div className="bar-grid-cont">
+                            <div className="line">40</div>
+                            <div className="line">35</div>
+                            <div className="line">30</div>
+                            <div className="line">25</div>
+                            <div className="line">20</div>
+                            <div className="line">15</div>
+                            <div className="line">10</div>
+                            <div className="line">5</div>
+                            <div className="line first"></div>
+                        </div>
+                        <Bar thresholda={this.props.thresholda} thresholdaa={this.props.thresholdaa} name={"Level A"} level={0} num={this.props.levels[0]} />
+                        <Bar thresholda={this.props.thresholda} thresholdaa={this.props.thresholdaa} name={"Level AA"} level={1} num={this.props.levels[1]} />
+                        <Bar thresholda={this.props.thresholda} thresholdaa={this.props.thresholdaa} name={"Level AAA"} level={2} num={this.props.levels[2]} />
                     </div>
-                    <Bar name={"Level A"} level={0} num={this.props.levels[0]} />
-                    <Bar name={"Level AA"} level={1} num={this.props.levels[1]} />
-                    <Bar name={"Level AAA"} level={2} num={this.props.levels[2]} />
-                </div>
-                <div className="col-60">
-                    <p>{this.props.levels[0]} Level A</p>
-                    <p>{this.props.levels[1]} Level AA</p>
-                    <p>{this.props.levels[2]} Level AAA</p>
+                    <div className="overview">
+                    <div className="legendItem"><span className="tag a"></span><strong>{this.props.levels[0]}</strong> Level A</div><br />
+                    <div className="legendItem"><span className="tag aa"></span><strong>{this.props.levels[1]}</strong> Level AA</div><br />
+                    <div className="legendItem"><span className="tag aaa"></span><strong>{this.props.levels[2]}</strong> Level AAA</div>
+                    </div>
                 </div>
             </div>
         )

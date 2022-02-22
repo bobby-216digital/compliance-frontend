@@ -12,8 +12,10 @@ export default class Header extends React.Component {
                     <path id="Path_271" data-name="Path 271" d="M3637.162,682.509a3.786,3.786,0,0,1-3.892-3.784V650.54a3.877,3.877,0,0,1,.045-.562,3.834,3.834,0,0,0-3.3,3.795v28.009a3.761,3.761,0,0,0,3.867,3.76l46.769-1.311a3.594,3.594,0,0,0,3.449-3.038Z" transform="translate(0 -7.868)" fill="#0e1f5b"/>
                 </g>
             </svg>
-            <span class="logoname">a11y.house</span>
-            <span class="logotag">Accessibility House</span>
+            <div className="logotext">
+                <span className="logoname">a11y.house</span>
+                <span className="logotag">Accessibility House</span>
+            </div>
         </header>
         )
     }

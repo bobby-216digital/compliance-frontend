@@ -3,9 +3,9 @@ import React from "react";
 class TextCard extends React.Component {
     render() {
         return(
-            <div className="card">
+            <div className="card textCard">
                 <p className="subText">
-                    { this.props.subtext }
+                    <strong>{ this.props.subtext }</strong>
                 </p>
                 <p>
                     { this.props.text }

@@ -11,6 +11,10 @@ class Admin extends React.Component {
             freq: "",
             slug: "",
             error: "",
+            contacts: "",
+            thresholda: "",
+            thresholdaa: "",
+            passcode: "",
             data: false
         }
 
@@ -77,10 +81,15 @@ class Admin extends React.Component {
                 "url": `${this.state.url}`,
                 "freq": `${this.state.freq}`,
                 "slug": `${this.state.slug}`,
+                "contacts": `${this.state.contacts}`,
+                "thresholda": `${this.state.thresholda}`,
+                "thresholdaa": `${this.state.thresholdaa}`,
+                "passcode": `${this.state.passcode}`
             })
         })
             .then(data => {
                 this.initData(true);
+                console.log(data.body)
                 this.setState({
                     error: "Site Onboarded!"
                 })
@@ -92,13 +101,15 @@ class Admin extends React.Component {
     }
 
     doChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
 
-        this.setState({
-        [name]: value
-        });
+            const target = event.target;
+            const value = target.type === 'checkbox' ? target.checked : target.value;
+            const name = target.name;
+
+            this.setState({
+            [name]: value
+            });
+
     }
 
     render() {
@@ -110,21 +121,29 @@ class Admin extends React.Component {
                     </div>
                     <div className="card">
                         <h2>Onboard a site</h2>
-                        <label for="url">Site URL</label>
-                        <input id="url" type="text" value={this.state.url} name="url" onChange={this.doChange(this.value)} />
-                        <label for="url">Scan Frequency (in days)</label>
-                        <input id="freq" type="text" value={this.state.freq} name="freq" onChange={this.doChange(this.value)} />
-                        <label for="url">Site Slug (e.g. 'nike')</label>
-                        <input id="slug" type="text" value={this.state.slug} name="slug" onChange={this.doChange(this.value)} />
+                        <label htmlFor="url">Site URL</label>
+                        <input id="url" type="text" value={this.state.url} name="url" onChange={(x) => this.doChange(x)} />
+                        <label htmlFor="url">Scan Frequency (in days)</label>
+                        <input id="freq" type="text" value={this.state.freq} name="freq" onChange={(x) => this.doChange(x)} />
+                        <label htmlFor="url">Site Slug (e.g. 'nike')</label>
+                        <input id="slug" type="text" value={this.state.slug} name="slug" onChange={(x) => this.doChange(x)} />
+                        <label htmlFor="contacts">Contacts (comma separated)</label>
+                        <input id="contacts" type="text" value={this.state.contacts} name="contacts" onChange={(x) => this.doChange(x)} />
+                        <label htmlFor="thresholda">Level A Threshold</label>
+                        <input id="thresholda" type="text" value={this.state.thresholda} name="thresholda" onChange={(x) => this.doChange(x)} />
+                        <label htmlFor="thresholdaa">Level AA Threshold</label>
+                        <input id="thresholdaa" type="text" value={this.state.thresholdaa} name="thresholdaa" onChange={(x) => this.doChange(x)} />
+                        <label htmlFor="passcode">Passcode</label>
+                        <input id="passcode" type="text" value={this.state.passcode} name="passcode" onChange={(x) => this.doChange(x)} />
                         <button onClick={() => this.onboard()}>Submit</button>
                         <p>{this.state.error}</p>
                     </div>
                     <div className="card">
                         <h2>Sites</h2>
-                        {this.state.data ? this.state.data.map((x) => {
+                        {this.state.data ? this.state.data.map((x, i) => {
                             let link = "/" + x.slug
                             return(
-                               <div className="siteLine">
+                               <div key={i} className="siteLine">
                                    <a target="_new" href={link}>{x.url}</a>
                                </div> 
                             )
