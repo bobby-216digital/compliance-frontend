@@ -91,10 +91,6 @@ header svg {
   margin-right: 8px;
 }
 
-svg {
-  max-width: 100%;
-  height: fit-content;
-}
 
 polyline {
   filter: drop-shadow(0px 10px 8px rgba(0, 0, 0, 0.2));
@@ -119,20 +115,28 @@ polyline {
   font-weight: 600;
 }
 
-svg * {
-  stroke-width: 4px;
-  shape-rendering: "geometricPrecision";
-  font-size: 20px;
-  font-weight: 600;
+.right {
+  color: white;
+  float: right;
 }
 
-svg text {
+svg.complianceGraph {
+  max-width: 100%;
+}
+
+svg.complianceGraph * {
+  stroke-width: 2px;
+  shape-rendering: "geometricPrecision";
+}
+
+.dateText {
   z-index: 2;
   position: relative;
-  color: var(--darkblue);
+  fill: var(--darkblue);
+  font-size: 16px;
 }
 
-svg rect {
+svg.complianceGraph .dateRect {
   z-index: 1;
   position: relative;
   fill: white;
@@ -140,6 +144,16 @@ svg rect {
 
 .guideline {
   stroke: #AAA;
+}
+
+.hoverLine {
+  stroke: rgba(0, 0, 0, 0);
+  stroke-width: 50px !important;
+  cursor: pointer;
+}
+
+#BG-2 {
+  fill: white;
 }
 
 .legendItem {
@@ -155,6 +169,19 @@ svg rect {
   margin: 0px 4px;
   position: relative;
   top: 4px;
+}
+
+.tooltip {
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.open {
+  opacity: 1;
+}
+
+.inner h3 strong {
+  color: white !important;
 }
 
 .a {
@@ -228,6 +255,7 @@ main {
   background-color: black;
   position: absolute;
   bottom: 0px;
+  opacity: 0.9;
 }
 
 .bar-grid-cont {
@@ -248,13 +276,15 @@ main {
 }
 
 .complianceGraph {
-  width: 78%;
   margin: 0 auto;
 }
 
 .cat {
   max-width: calc(100% - 40px);
-  float: left;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .numIssues {
@@ -263,8 +293,21 @@ main {
 
 .issue {
   height: 24px;
+  max-height: 24px;
   overflow: hidden;
   padding: 4px;
+  cursor: pointer;
+}
+
+.issue:hover {
+  height: fit-content;
+  max-height: inherit;
+  border: 1px solid #CCC;
+}
+
+.issue:hover > .cat {
+  white-space: inherit;
+  overflow: inherit;
 }
 
 .issuePanel h3, .noticePanel h2 {

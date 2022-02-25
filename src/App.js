@@ -92,6 +92,8 @@ class Panel extends React.Component {
         lastDate = new Date(data.sortsite[data.sortsite.length - 1].date).toLocaleDateString();
         nextDate = new Date((data.sortsite[data.sortsite.length - 1].date + (data.freq * 86400000))).toLocaleDateString();
       }
+    } else {
+      return(<h2>Loading data...</h2>)
     }
     return (
       <React.Fragment>
@@ -117,7 +119,7 @@ class Panel extends React.Component {
             }
             <img src={trustmark} alt="Accessibility House Logo" />
           </div>
-          <ComplianceGraph data={data} />
+          <ComplianceGraph data={this.state.data} />
         </div>
       </React.Fragment>
     );
