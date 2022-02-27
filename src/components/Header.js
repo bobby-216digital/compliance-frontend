@@ -14,7 +14,7 @@ export default class Header extends React.Component {
             </svg>
             <div className="logotext">
                 <span className="logoname">a11y.house</span>
-                <span className="logotag">Accessibility House</span>
+                <span className="logotag">Accessibility Radar</span>
             </div>
         </header>
         )
