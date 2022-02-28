@@ -171,6 +171,19 @@ svg.complianceGraph .dateRect {
   top: 4px;
 }
 
+.titleCard {
+  width: 100%;
+  line-height: 1;
+}
+
+.titleCard h2 {
+  margin-bottom: 0;
+}
+
+.titleCard strong {
+  font-size: 24px;
+}
+
 .tooltip {
   opacity: 0;
   transition: opacity 0.1s ease-in-out;
@@ -318,7 +331,7 @@ main {
 
 .inner {
   border-radius: 5px;
-  max-height: 540px;
+  max-height: 406px;
   overflow-y: scroll;
   padding-right: 12px;
 

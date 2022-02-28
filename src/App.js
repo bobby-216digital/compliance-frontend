@@ -99,6 +99,10 @@ class Panel extends React.Component {
       <React.Fragment>
         {/* <h1>Report for {this.state.data.url}</h1> */}
         <div className="datesTile third">
+          <div className="card titleCard">
+            <h2>Compliance Dashboard</h2><br/>
+            <strong><a target="_new" href={this.state.data.url}>{this.state.data.url}</a></strong>
+          </div>
           <TextCard subtext={"Last Scan Date"} text={data ? lastDate : "X/XX/XXXX"} />
           <TextCard subtext={"Next Scan Date"} text={data ? nextDate : "X/XX/XXXX"} />
           <IssuePanel levels={this.state.levels} issues={this.state.issues} />
