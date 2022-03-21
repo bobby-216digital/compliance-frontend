@@ -223,6 +223,11 @@ svg.complianceGraph .dateRect {
   background-color: black;
 }
 
+.contact-form {
+  display: block !important;
+  width: fit-content;
+}
+
 .card {
   border: 1px solid var(--light);
   border-radius: 6px;

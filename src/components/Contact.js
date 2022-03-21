@@ -17,7 +17,8 @@ class ContactForm extends React.Component {
         this.state = {
             url: "",
             email: "",
-            note: ""
+            note: "",
+            type: ""
         };
     }
 
@@ -41,6 +42,7 @@ class ContactForm extends React.Component {
             body: JSON.stringify({
                 "url": `${this.state.url}`,
                 "email": `${this.state.email}`,
+                "type": `${this.state.type}`,
                 "note": `${this.state.note}`
             })
         })
@@ -56,14 +58,14 @@ class ContactForm extends React.Component {
         return (
             <div className="contact-form card">
                 <fieldset>
-                    <legend><h2>Inquiry Details</h2></legend>
+                    <legend><h2>Contact Us</h2></legend>
                     <div className="contact-wrapper">
                         <label htmlFor="url">Website</label>
                         <input type="text" name="url" id="url" value={this.props.url ? this.props.url : this.state.url} onChange={(x) => this.doChange(x)} />
                         <label htmlFor="email">Email Address</label>
                         <input type="text" name="email" id="email"  value={this.state.email} onChange={(x) => this.doChange(x)}/>
                         <label htmlFor="type">Inquiry Type</label>
-                        <select name="email" id="email">
+                        <select name="type" id="type" onChange={(x) => this.doChange(x)}>
                             <option value="learn">I'd like to learn more about a11y.Radar</option>
                             <option value="issues">I'd like some help fixing issues on my site</option>
                             <option value="support">There is an issue with my account</option>
