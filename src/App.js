@@ -35,17 +35,18 @@ class Panel extends React.Component {
       fetch("https://a11y-server.herokuapp.com/site/" + this.props.url)
         .then(response => response.json())
         .then(data => {
+          console.log(data)
           this.initData(data.data.querySite[0]);
         });
     }
   }
 
   initData(data) {
-    let sortsite = JSON.parse(decodeURIComponent(data.sortsite[data.sortsite.length - 1].issues));
-    console.log(sortsite);
-    let obj = {}
-    let levels = [0, 0, 0];
-    if (sortsite.length !== 0) {
+    if (data.sortsite[0]) {
+      let sortsite = JSON.parse(decodeURIComponent(data.sortsite[data.sortsite.length - 1].issues));
+      console.log(sortsite);
+      let obj = {}
+      let levels = [0, 0, 0];
       Object.keys(sortsite).map((x, i) => {
         levels[i] = Object.keys(sortsite[x]).length;
         Object.keys(sortsite[x]).map((n) => {
@@ -58,20 +59,16 @@ class Panel extends React.Component {
         })
         return true
       })
-
       this.setState({
         data: data,
-        issues: obj,
-        levels: levels
+        levels: levels,
+        issues: obj
       })
     } else {
       this.setState({
         data: data
       })
     }
-    
-
-    
   }
 
   render() {
@@ -80,11 +77,10 @@ class Panel extends React.Component {
     let data = this.state.data;
 
     if (data !== false) {
-      if (data.length === 0) {
+      if (!data.sortsite[0]) {
         return (
           <React.Fragment>
-            <h1>Report for {this.state.data.url}</h1>
-            <div className="card">Awaiting initial scan. Scans may take up to 48 hours to complete.</div>
+            <div className="card">Awaiting initial scan for {this.state.data.url}.<br />Scans may take up to 48 hours to complete.</div>
           </React.Fragment>
           
         )
