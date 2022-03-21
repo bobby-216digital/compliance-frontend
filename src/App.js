@@ -108,12 +108,12 @@ class Panel extends React.Component {
           <IssuePanel levels={this.state.levels} issues={this.state.issues} />
         </div>
         <div className="two-thirds">
-          <CompliancePanel levels={this.state.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
+          <CompliancePanel data={data} levels={this.state.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
           <div className="card third">
             {data.thresholda < this.state.levels[0] || data.thresholda < this.state.levels[1] ? 
             <div className="noticePanel">
               <h2>⚠️ Notice</h2>
-              <p>Your error count has surpassed your risk tolerance threshold. Please <a href="mailto:team@216digital.com">contact us</a> if you would like help remediating these issues.</p>
+              <p>Your error count has surpassed your risk tolerance threshold. Please <a href={"/" + data.slug + "/contact"}>contact us</a> if you would like help remediating these issues.</p>
             </div> 
             : 
             <div className="noticePanel">

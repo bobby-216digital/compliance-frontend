@@ -37,6 +37,7 @@
 
 body {
   background-color: #E8F5F7;
+  width: 100%;
 }
 
 img {
@@ -57,6 +58,15 @@ h2 {
   margin-top: 0px;
   font-size: 20px;
   font-weight: 600;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+}
+
+fieldset {
+  border: none;
 }
 
 .odd {
@@ -209,6 +219,10 @@ svg.complianceGraph .dateRect {
   background-color: #CCC;
 }
 
+.gen {
+  background-color: black;
+}
+
 .card {
   border: 1px solid var(--light);
   border-radius: 6px;
@@ -354,6 +368,19 @@ strong {
 
 .compliance {
   height: 247px;
+}
+
+.contact-wrapper {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  margin: 0 auto !important;
+}
+
+input, select, option, textarea {
+  width: 100%;
 }
 
 

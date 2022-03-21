@@ -9,6 +9,7 @@ import './index.css';
 import App from './App';
 import Admin from './Admin'
 import Header from './components/Header'
+import Contact from './components/Contact'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,8 @@ ReactDOM.render(
       <Routes>
           <Route path="/:url" element={<App />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/:url/contact" element={<Contact />} />
       </Routes>
     </Router>
     </main>
