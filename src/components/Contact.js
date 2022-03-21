@@ -1,11 +1,13 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function Contact() {
     let { url } = useParams();
+    let navigate = useNavigate();
     return (
         <React.Fragment>
-            <ContactForm url={url} />
+            <ContactForm url={url} navigate={navigate} />
         </React.Fragment>
     )
 }
@@ -47,7 +49,7 @@ class ContactForm extends React.Component {
             })
         })
             .then(data => {
-                console.log(data.body)
+                this.props.navigate("/thanks", { replace: true });
             })
             .catch(error => {
                 console.log(error)

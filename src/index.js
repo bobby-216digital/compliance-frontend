@@ -23,6 +23,7 @@ ReactDOM.render(
           <Route path="/admin" element={<Admin />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/:url/contact" element={<Contact />} />
+          <Route path="/thanks" element={<div className="card">Thanks for reaching out! One of our experts will be in touch shortly.</div>} />
       </Routes>
     </Router>
     </main>
