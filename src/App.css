@@ -44,7 +44,7 @@ img {
   max-width: 100%;
 }
 
-button {
+button, .btn {
   background-color: var(--darkblue);
   color: var(--lightblue);
   border: none;
@@ -221,6 +221,17 @@ svg.complianceGraph .dateRect {
 
 .gen {
   background-color: black;
+}
+
+.splash {
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 200px;
+}
+
+.splash h2 {
+  margin: 32px 0px;
 }
 
 .contact-form {
