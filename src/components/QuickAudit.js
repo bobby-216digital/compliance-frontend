@@ -52,6 +52,33 @@ export default class QuickAudit extends React.Component {
                 <div className="card issues">
                     <IssuePanel levels={this.props.levels} issues={this.props.issues} />
                 </div>
+                <div className="doc-header">
+                    <h2>Lighthouse Errors <span class="grey">(Homepage)</span></h2>
+                </div>
+                <div className="card issues">
+                    Errors here
+                </div>
+                <div className="doc-header">
+                    <h2>Wave Errors <span class="grey">(Homepage)</span></h2>
+                </div>
+                <div className="card issues">
+                    <div className="issuePanel">
+                        <div className="inner">
+                            {data.wave[data.wave.length - 1].issues.map((x, i) => {
+                                return(
+                                    <div className={i % 2 !== 0 ? "issue odd" : "issue even"}>
+                                        <div className="cat">{x.description}</div>
+                                        <span className="numIssues">{x.count}</span>
+                                    </div> 
+                                )
+                            })}
+                        </div>
+                    </div>
+                </div>
+                <div className="cta doc-header">
+                    <p>Our in-house accessibility experts are on deck to fix these issues as soon as possible, or advise your internal development resources on what it will take to get back in bounds.</p>
+                    <p>Please reach out at <a href="/contact">info@a11yradar.com</a> if you'd like to connect!</p>
+                </div>
             </div>
         )
     }

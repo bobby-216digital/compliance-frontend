@@ -263,10 +263,6 @@ main {
   margin: 0 auto;
 }
 
-.compliance {
-  width: calc(66% - 120px);
-}
-
 .bar-cont {
   width: 108px;
   text-align: center;
@@ -483,6 +479,10 @@ input, select, option, textarea {
 
 .doc-wrapper .other {
   display: none;
+}
+
+.grey {
+  color: var(--lightblue)
 }
 
 
