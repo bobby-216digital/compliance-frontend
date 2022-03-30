@@ -15,8 +15,7 @@ class IssuePanel extends React.Component {
     render() {
         console.log(this.props.issues);
         return(
-            <div className="card issuePanel">
-                <h2>Outstanding Issues</h2>
+            <div className="issuePanel">
                 <div className="inner">
                     <h3><strong>{this.props.issues['a'].length}</strong> Level A<span className="right"># Pages</span></h3>
                     {this.props.issues['a'] ? this.props.issues['a'].map((x, i) => {

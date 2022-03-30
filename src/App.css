@@ -399,6 +399,92 @@ input, select, option, textarea {
   width: 100%;
 }
 
+/* QuickAudit */
+
+.doc-wrapper {
+  width: 1200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.doc-header {
+  background-color: var(--light);
+  width: calc(100% - 24px);
+  padding: 12px;
+}
+
+.inner-card {
+  width: calc(33% - 72px);
+  display: inline-block;
+}
+
+.doc-wrapper .compliance {
+  width: 100%;
+}
+
+.doc-wrapper .compliance .bar-cont {
+  width: 74px;
+}
+
+.doc-wrapper .compliance .bar-grid-cont {
+  width: 222px;
+}
+
+.doc-wrapper .overview {
+  width: 100px !important;
+}
+
+.doc-wrapper .card {
+  height: 250px;
+}
+
+.lh-graph {
+  width: fit-content;
+  margin: 0 auto;
+  position: relative;
+}
+
+.wave-card {
+  position: relative;
+}
+
+.lh-graph svg path {
+  stroke: var(--darkblue);
+}
+
+.lh-score {
+  position: absolute;
+  top: 64px;
+  right: 64px;
+  font-size: 42px;
+}
+
+.wave-score {
+  font-size: 42px;
+  width: fit-content;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.wave-text {
+  font-size: 24px;
+  color: var(--lightblue);
+}
+
+.issues {
+  width: 100%;
+  height: fit-content !important;
+}
+
+.issues .inner {
+  height: fit-content !important;
+  max-height: initial !important;
+}
+
+.doc-wrapper .other {
+  display: none;
+}
+
 
 @media screen and (max-width: 800px) {
   .third, .two-thirds, .card {

@@ -25,7 +25,8 @@ class Panel extends React.Component {
     this.state = {
       data: false,
       levels: ["X", "X", "X"],
-      issues: false
+      issues: false,
+      waveCount: 0
     }
 
     this.initData = this.initData.bind(this);
@@ -60,10 +61,15 @@ class Panel extends React.Component {
         })
         return true
       })
+      let waveCount = 0;
+      data.wave[data.wave.length - 1].issues.map((x) => {
+        waveCount = waveCount + x.count
+      })
       this.setState({
         data: data,
         levels: levels,
-        issues: obj
+        issues: obj,
+        waveCount: waveCount
       })
     } else {
       this.setState({
@@ -94,7 +100,7 @@ class Panel extends React.Component {
       return(<h2>Loading data...</h2>)
     }
     if (this.props.qa == true) {
-      return (<QuickAudit data={data} />)
+      return (<QuickAudit waveCount={this.state.waveCount} data={data} levels={this.state.levels} issues={this.state.issues} />)
     } else {
     return (
       <React.Fragment>
@@ -106,10 +112,15 @@ class Panel extends React.Component {
           </div>
           <TextCard subtext={"Last Scan Date"} text={data ? lastDate : "X/XX/XXXX"} />
           <TextCard subtext={"Next Scan Date"} text={data ? nextDate : "X/XX/XXXX"} />
-          <IssuePanel levels={this.state.levels} issues={this.state.issues} />
+          <div className="card">
+            <h2>Outstanding Issues</h2>
+            <IssuePanel levels={this.state.levels} issues={this.state.issues} />
+          </div>
         </div>
         <div className="two-thirds">
-          <CompliancePanel data={data} levels={this.state.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
+          <div className="card">
+            <CompliancePanel data={data} levels={this.state.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
+          </div>
           <div className="card third">
             {data.thresholda < this.state.levels[0] || data.thresholda < this.state.levels[1] ? 
             <div className="noticePanel">

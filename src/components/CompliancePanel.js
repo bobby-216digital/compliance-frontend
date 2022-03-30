@@ -42,8 +42,8 @@ class Bar extends React.Component {
 class CompliancePanel extends React.Component {
     render() {
         return(
-            <div className="card compliance">
-                <h2>Current Compliance Status</h2>
+            <div className="compliance">
+                <h2>Issues</h2>
                 <div className="complianceWrapper">
                     <div className="outer-bar-cont">
                         <div className="bar-grid-cont">
@@ -65,8 +65,8 @@ class CompliancePanel extends React.Component {
                     <div className="legendItem"><span className="tag a"></span><strong>{this.props.levels[0]}</strong> Level A</div><br />
                     <div className="legendItem"><span className="tag aa"></span><strong>{this.props.levels[1]}</strong> Level AA</div><br />
                     <div className="legendItem"><span className="tag aaa"></span><strong>{this.props.levels[2]}</strong> Level AAA</div><br />
-                    <div className="legendItem"><span className="tag gen"></span><strong>{this.props.data.lighthouse[this.props.data.lighthouse.length - 1] ? this.props.data.lighthouse[this.props.data.lighthouse.length - 1].score : "⚠️"}</strong> Lighthouse</div><br />
-                    <div className="legendItem"><span className="tag gen"></span><strong>{this.props.data.wave[this.props.data.wave.length - 1] ? this.props.data.wave[this.props.data.wave.length - 1].issues.length : "⚠️"}</strong> Wave Errors</div>
+                    <div className="legendItem other"><span className="tag gen"></span><strong>{this.props.data.lighthouse[this.props.data.lighthouse.length - 1] ? this.props.data.lighthouse[this.props.data.lighthouse.length - 1].score : "⚠️"}</strong> Lighthouse</div><br />
+                    <div className="legendItem other"><span className="tag gen"></span><strong>{this.props.data.wave[this.props.data.wave.length - 1] ? this.props.data.wave[this.props.data.wave.length - 1].issues.length : "⚠️"}</strong> Wave Errors</div>
                     </div>
                 </div>
             </div>
