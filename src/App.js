@@ -6,14 +6,15 @@ import TextCard from './components/TextCard'
 import IssuePanel from './components/IssuePanel'
 import CompliancePanel from './components/CompliancePanel'
 import ComplianceGraph from './components/ComplianceGraph'
+import QuickAudit from './components/QuickAudit';
 import { useParams } from 'react-router-dom';
 
-function App() {
+function App(props) {
   let { url } = useParams();
   console.log(url)
   return (
     <React.Fragment>
-      <Panel url={url} />
+      <Panel url={url} qa={props.qa} />
     </React.Fragment>
   )
 }
@@ -73,6 +74,7 @@ class Panel extends React.Component {
 
   render() {
     console.log(this.state)
+    console.log(this.props)
     let lastDate, nextDate = "";
     let data = this.state.data;
 
@@ -91,6 +93,9 @@ class Panel extends React.Component {
     } else {
       return(<h2>Loading data...</h2>)
     }
+    if (this.props.qa == true) {
+      return (<QuickAudit data={data} />)
+    } else {
     return (
       <React.Fragment>
         {/* <h1>Report for {this.state.data.url}</h1> */}
@@ -123,6 +128,7 @@ class Panel extends React.Component {
         </div>
       </React.Fragment>
     );
+    }
   }
 }
 
