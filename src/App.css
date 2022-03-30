@@ -410,8 +410,15 @@ input, select, option, textarea {
 }
 
 .inner-card {
-  width: calc(33% - 72px);
   display: inline-block;
+}
+
+.half {
+  width: calc(50% - 74px);
+}
+
+.quarter {
+  width: calc(25% - 74px);
 }
 
 .doc-wrapper .compliance {
@@ -419,15 +426,11 @@ input, select, option, textarea {
 }
 
 .doc-wrapper .compliance .bar-cont {
-  width: 74px;
+  width: 100px;
 }
 
 .doc-wrapper .compliance .bar-grid-cont {
-  width: 222px;
-}
-
-.doc-wrapper .overview {
-  width: 100px !important;
+  width: 300px;
 }
 
 .doc-wrapper .card {
@@ -475,6 +478,10 @@ input, select, option, textarea {
 .issues .inner {
   height: fit-content !important;
   max-height: initial !important;
+}
+
+.doc-header h2 {
+  margin: 4px;
 }
 
 .doc-wrapper .other {
