@@ -451,7 +451,7 @@ input, select, option, textarea {
 .lh-score {
   position: absolute;
   top: 64px;
-  right: 64px;
+  right: 68px;
   font-size: 42px;
 }
 
@@ -483,6 +483,10 @@ input, select, option, textarea {
 
 .grey {
   color: var(--lightblue)
+}
+
+.doc-wrapper .bar-cont {
+  font-size: 14px;
 }
 
 
