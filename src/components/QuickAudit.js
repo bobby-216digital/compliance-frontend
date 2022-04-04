@@ -17,10 +17,10 @@ export default class QuickAudit extends React.Component {
                     <span>Site: {data.url}</span>
                     <span>Date: {new Date(data.sortsite[data.sortsite.length - 1].date).toLocaleDateString()}</span>
                 </div>
-                <div className="inner-card card">
+                <div className="inner-card card half">
                     <CompliancePanel qa={true} data={data} levels={this.props.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
                 </div>
-                <div className="inner-card card">
+                <div className="inner-card card quarter">
                     <h2>Lighthouse</h2>
                     <div className="lh-graph">
                         <svg width="180" height="180" viewBox="0 0 36 36">
@@ -39,7 +39,7 @@ export default class QuickAudit extends React.Component {
                         </span>
                     </div>
                 </div>
-                <div className="inner-card card wave-card">
+                <div className="inner-card card wave-card quarter">
                     <h2>Wave</h2>
                     <div className="wave-score">
                         {this.props.waveCount}<br />
