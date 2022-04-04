@@ -448,7 +448,7 @@ input, select, option, textarea {
 }
 
 .lh-graph svg path {
-  stroke: var(--darkblue);
+  stroke: var(--lightblue);
 }
 
 .lh-score {
@@ -456,6 +456,7 @@ input, select, option, textarea {
   top: 64px;
   right: 68px;
   font-size: 42px;
+  color: var(--darkblue);
 }
 
 .wave-score {
@@ -490,10 +491,6 @@ input, select, option, textarea {
 
 .grey {
   color: var(--lightblue)
-}
-
-.doc-wrapper .bar-cont {
-  font-size: 14px;
 }
 
 
