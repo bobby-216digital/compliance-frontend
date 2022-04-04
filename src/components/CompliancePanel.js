@@ -66,7 +66,7 @@ class CompliancePanel extends React.Component {
                     <div className="legendItem"><span className="tag aa"></span><strong>{this.props.levels[1]}</strong> Level AA</div><br />
                     <div className="legendItem"><span className="tag aaa"></span><strong>{this.props.levels[2]}</strong> Level AAA</div><br />
                     <div className="legendItem other"><span className="tag gen"></span><strong>{this.props.data.lighthouse[this.props.data.lighthouse.length - 1] ? this.props.data.lighthouse[this.props.data.lighthouse.length - 1].score : "⚠️"}</strong> Lighthouse</div><br />
-                    <div className="legendItem other"><span className="tag gen"></span><strong>{this.props.data.wave[this.props.data.wave.length - 1] ? this.props.data.wave[this.props.data.wave.length - 1].issues.length : "⚠️"}</strong> Wave Errors</div>
+                    <div className="legendItem other"><span className="tag gen"></span><strong>{this.props.data.wave[this.props.data.wave.length - 1] ? this.props.waveCount : "⚠️"}</strong> Wave Errors</div>
                     </div>
                 </div>
             </div>

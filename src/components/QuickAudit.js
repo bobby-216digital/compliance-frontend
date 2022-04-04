@@ -71,7 +71,7 @@ export default class QuickAudit extends React.Component {
                     <h2>Issue Details</h2>
                 </div>
                 <div className="card issues">
-                    <IssuePanel levels={this.props.levels} issues={this.props.issues} />
+                    <IssuePanel sortsite={this.props.sortsite} levels={this.props.levels} issues={this.props.issues} />
                 </div>
                 <div className="doc-header">
                     <h2>Wave Errors <span className="grey">(Homepage)</span></h2>

@@ -26,7 +26,8 @@ class Panel extends React.Component {
       data: false,
       levels: ["X", "X", "X"],
       issues: false,
-      waveCount: 0
+      waveCount: 0,
+      sortsite: null
     }
 
     this.initData = this.initData.bind(this);
@@ -69,7 +70,8 @@ class Panel extends React.Component {
         data: data,
         levels: levels,
         issues: obj,
-        waveCount: waveCount
+        waveCount: waveCount,
+        sortsite: sortsite
       })
     } else {
       this.setState({
@@ -100,7 +102,7 @@ class Panel extends React.Component {
       return(<h2>Loading data...</h2>)
     }
     if (this.props.qa == true) {
-      return (<QuickAudit waveCount={this.state.waveCount} data={data} levels={this.state.levels} issues={this.state.issues} />)
+      return (<QuickAudit sortsite={this.state.sortsite} waveCount={this.state.waveCount} data={data} levels={this.state.levels} issues={this.state.issues} />)
     } else {
     return (
       <React.Fragment>
@@ -114,12 +116,12 @@ class Panel extends React.Component {
           <TextCard subtext={"Next Scan Date"} text={data ? nextDate : "X/XX/XXXX"} />
           <div className="card">
             <h2>Outstanding Issues</h2>
-            <IssuePanel levels={this.state.levels} issues={this.state.issues} />
+            <IssuePanel sortsite={this.state.sortsite} levels={this.state.levels} issues={this.state.issues} />
           </div>
         </div>
         <div className="two-thirds">
           <div className="card">
-            <CompliancePanel data={data} levels={this.state.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
+            <CompliancePanel waveCount={this.state.waveCount} data={data} levels={this.state.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
           </div>
           <div className="card third">
             {data.thresholda < this.state.levels[0] || data.thresholda < this.state.levels[1] ? 
