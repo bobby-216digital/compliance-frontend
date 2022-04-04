@@ -492,7 +492,7 @@ input, select, option, textarea {
 
 .wave-text {
   font-size: 24px;
-  color: var(--lightblue);
+  color: var(--blue);
 }
 
 .issues {
@@ -516,7 +516,7 @@ input, select, option, textarea {
 }
 
 .grey {
-  color: var(--lightblue);
+  color: var(--blue);
 }
 
 .darkblue {
