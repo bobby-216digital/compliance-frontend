@@ -2,6 +2,25 @@ import React from "react";
 import CompliancePanel from './CompliancePanel'
 import IssuePanel from './IssuePanel'
 
+class WaveErrors extends React.Component {
+    render() {
+        if (this.props.wave.issues) {
+            return (
+                this.props.wave[this.props.wave.length - 1].issues.map((x, i) => {
+                    return(
+                        <div className={i % 2 !== 0 ? "issue odd" : "issue even"}>
+                            <div className="cat">{x.description}</div>
+                            <span className="numIssues">{x.count}</span>
+                        </div> 
+                    )
+                })
+            )
+        } else {
+            return (<p>No Wave errors!</p>)
+        }
+    }
+}
+
 export default class QuickAudit extends React.Component {
     constructor(props) {
         super(props);
@@ -14,8 +33,8 @@ export default class QuickAudit extends React.Component {
             <div className="doc-wrapper card">
                 <div className="doc-header">
                     <h2>WCAG 2.1 AA Issue Report</h2>
-                    <span>Site: {data.url}</span>
-                    <span>Date: {new Date(data.sortsite[data.sortsite.length - 1].date).toLocaleDateString()}</span>
+                    <span class="right">Site: {data.url}<br />
+                    Date: {new Date(data.sortsite[data.sortsite.length - 1].date).toLocaleDateString()}</span>
                 </div>
                 <div className="inner-card card half">
                     <CompliancePanel qa={true} data={data} levels={this.props.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
@@ -33,10 +52,8 @@ export default class QuickAudit extends React.Component {
                                 strokeWidth="4"
                                 strokeDasharray={data.lighthouse.length > 0 ? data.lighthouse[data.lighthouse.length - 1].score + ", 100" : "0, 100"}
                             />
+                            <text x="11" y="22" textLength="14">{data.lighthouse.length > 0 ? data.lighthouse[data.lighthouse.length - 1].score : "⚠️"}</text>
                         </svg>
-                        <span className="lh-score">
-                            {data.lighthouse.length > 0 ? data.lighthouse[data.lighthouse.length - 1].score : "⚠️"}
-                        </span>
                     </div>
                 </div>
                 <div className="inner-card card wave-card quarter">
@@ -57,17 +74,8 @@ export default class QuickAudit extends React.Component {
                 </div>
                 <div className="card issues">
                     <div className="issuePanel">
-                        <div className="inner">
-                            {data.wave[data.wave.length - 1].issues.map((x, i) => {
-                                return(
-                                    <div className={i % 2 !== 0 ? "issue odd" : "issue even"}>
-                                        <div className="cat">{x.description}</div>
-                                        <span className="numIssues">{x.count}</span>
-                                    </div> 
-                                )
-                            })}
+                            <WaveErrors wave={data.wave} />
                         </div>
-                    </div>
                 </div>
                 <div className="cta doc-header">
                     <p>Our in-house accessibility experts are on deck to fix these issues as soon as possible, or advise your internal development resources on what it will take to get back in bounds.</p>

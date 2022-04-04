@@ -250,7 +250,6 @@ svg.complianceGraph .dateRect {
   padding: 24px;
   max-width: calc(100% - 74px);
   overflow: hidden;
-  height: fit-content;
 }
 
 .textCard {
@@ -425,6 +424,18 @@ input, select, option, textarea {
   width: 100%;
 }
 
+.doc-header h2 {
+  width: fit-content;
+  display: inline-block;
+}
+
+.doc-header .right {
+  color: var(--darkblue) !important;
+  text-align: right;
+  position: relative;
+  top: -4px;
+}
+
 .doc-wrapper .compliance .bar-cont {
   width: 100px;
 }
@@ -433,7 +444,7 @@ input, select, option, textarea {
   width: 300px;
 }
 
-.doc-wrapper .card {
+.doc-wrapper .inner-card {
   height: 250px;
 }
 
@@ -449,6 +460,15 @@ input, select, option, textarea {
 
 .lh-graph svg path {
   stroke: var(--lightblue);
+}
+
+.lh-graph, .lh-graph svg {
+  max-width: 100%;
+  font-size: 12px;
+}
+
+.lh-graph svg text {
+  fill: var(--darkblue);
 }
 
 .lh-score {
@@ -473,12 +493,14 @@ input, select, option, textarea {
 
 .issues {
   width: 100%;
-  height: fit-content !important;
 }
 
 .issues .inner {
-  height: fit-content !important;
   max-height: initial !important;
+}
+
+.doc-wrapper .inner {
+  max-height: 10000px;
 }
 
 .doc-header h2 {
