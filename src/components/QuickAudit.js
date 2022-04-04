@@ -3,8 +3,12 @@ import CompliancePanel from './CompliancePanel'
 import IssuePanel from './IssuePanel'
 
 class WaveErrors extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
-        if (this.props.wave.issues) {
+        console.log(this.props);
+        if (this.props.wave[this.props.wave.length - 1].issues.length > 0) {
             return (
                 this.props.wave[this.props.wave.length - 1].issues.map((x, i) => {
                     return(
