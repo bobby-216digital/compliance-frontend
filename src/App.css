@@ -535,6 +535,7 @@ input, select, option, textarea {
 @media screen and (max-width: 800px) {
   .third, .two-thirds, .card {
     width: 100%;
-    max-width: calc(100% - 24px);
+    max-width: calc(100% - 76px);
+    height: fit-content !important;
   }
 }
