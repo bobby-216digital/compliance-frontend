@@ -412,6 +412,10 @@ input, select, option, textarea {
   display: inline-block;
 }
 
+.full {
+  width: calc(100% - 74px);
+}
+
 .half {
   width: calc(50% - 74px);
 }
@@ -512,7 +516,19 @@ input, select, option, textarea {
 }
 
 .grey {
-  color: var(--lightblue)
+  color: var(--lightblue);
+}
+
+.darkblue {
+  color: var(--darkblue) !important;
+}
+
+.inner-card h2 {
+  margin-bottom: 0 !important;
+}
+
+.inner-card .subtext {
+  margin-bottom: 12px;
 }
 
 
