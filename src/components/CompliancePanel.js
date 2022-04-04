@@ -43,7 +43,7 @@ class CompliancePanel extends React.Component {
     render() {
         return(
             <div className="compliance">
-                <h2>Issues</h2>
+                <h2>Issues {this.props.levels[0] >= this.props.thresholda || this.props.levels[1] >= this.props.thresholdaa ? "⚠️" : ""}</h2>
                 <div className="complianceWrapper">
                     <div className="outer-bar-cont">
                         <div className="bar-grid-cont">

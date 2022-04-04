@@ -44,7 +44,7 @@ export default class QuickAudit extends React.Component {
                     <CompliancePanel qa={true} data={data} levels={this.props.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
                 </div>
                 <div className="inner-card card quarter">
-                    <h2>Lighthouse</h2>
+                    <h2>Lighthouse {data.lighthouse[data.lighthouse.length - 1].score < 90 ? " ⚠️" : ""}</h2>
                     <div className="lh-graph">
                         <svg width="180" height="180" viewBox="0 0 36 36">
                             <path
@@ -61,7 +61,7 @@ export default class QuickAudit extends React.Component {
                     </div>
                 </div>
                 <div className="inner-card card wave-card quarter">
-                    <h2>Wave</h2>
+                    <h2>Wave{this.props.waveCount > 5 ? " ⚠️" : ""}</h2>
                     <div className="wave-score">
                         {this.props.waveCount}<br />
                         <span className="wave-text">Errors</span>
