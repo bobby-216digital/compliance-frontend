@@ -33,6 +33,10 @@ export default class QuickAudit extends React.Component {
     render() {
         console.log(this.props)
         const data = this.props.data;
+        let lhScore = 0;
+        if (data.lighthouse[data.lighthouse.length - 1]) {
+            lhScore = data.lighthouse[data.lighthouse.length - 1].score;
+        }
         return (
             <div className="doc-wrapper card">
                 <div className="doc-header">
@@ -44,7 +48,7 @@ export default class QuickAudit extends React.Component {
                     <CompliancePanel qa={true} data={data} levels={this.props.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
                 </div>
                 <div className="inner-card card quarter">
-                    <h2>Lighthouse {data.lighthouse[data.lighthouse.length - 1].score < 90 ? " ⚠️" : ""}</h2>
+                    <h2>Lighthouse {lhScore < 90 ? " ⚠️" : ""}</h2>
                     <div className="subtext grey">90 or above</div>
                     <div className="lh-graph">
                         <svg width="180" height="180" viewBox="0 0 36 36">
