@@ -95,6 +95,9 @@ header {
   padding: 18px;
   background-color: var(--light);
   border-bottom: 1px solid var(--lightblue);
+  position: sticky;
+  top: 0px;
+  z-index: 999;
 }
 
 header svg {
