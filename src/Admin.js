@@ -140,15 +140,39 @@ class Admin extends React.Component {
                     </div>
                     <div className="card">
                         <h2>Sites</h2>
-                        {this.state.data ? this.state.data.map((x, i) => {
+                        <div className="tabPanel">
+                            <div className="innerPanel mainPanel">
+                                <h3>Ongoing</h3>
+                              {this.state.data ? this.state.data.map((x, i) => {
                             let link = "/" + x.slug
-                            return(
+                            if (x.freq < 200) {
+                                return(
                                <div key={i} className="siteLine">
                                    <a target="_blank" href={link}>{x.url}</a>&nbsp;|&nbsp;
                                    <a target="_blank" href={"/qa" + link}>QA</a>
                                </div> 
                             )
-                        }) : ""}
+                            }
+                            
+                        }) : ""}  
+                            </div>
+                            <div className="innerPanel qaPanel">
+                                <h3>QA</h3>
+                            {this.state.data ? this.state.data.map((x, i) => {
+                            let link = "/" + x.slug
+                            if (x.freq >= 200) {
+                                return(
+                               <div key={i} className="siteLine">
+                                   <a target="_blank" href={link}>{x.url}</a>&nbsp;|&nbsp;
+                                   <a target="_blank" href={"/qa" + link}>QA</a>
+                               </div> 
+                            )
+                            }
+                            
+                        }) : ""}  
+                            </div>
+                        </div>
+                        
                     </div>
                 </React.Fragment>
             )
