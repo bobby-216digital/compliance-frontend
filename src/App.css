@@ -534,6 +534,12 @@ input, select, option, textarea {
   margin-bottom: 12px;
 }
 
+.innerPanel {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0px 12px;
+}
+
 
 @media screen and (max-width: 800px) {
   .third, .two-thirds, .card {

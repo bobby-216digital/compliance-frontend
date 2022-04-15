@@ -142,7 +142,9 @@ class Admin extends React.Component {
                         <h2>Sites</h2>
                         <div className="tabPanel">
                             <div className="innerPanel mainPanel">
-                                <h3>Ongoing</h3>
+                                <div className="doc-header">
+                                    <h2>Ongoing</h2>
+                                </div>
                               {this.state.data ? this.state.data.map((x, i) => {
                             let link = "/" + x.slug
                             if (x.freq < 200) {
@@ -157,7 +159,9 @@ class Admin extends React.Component {
                         }) : ""}  
                             </div>
                             <div className="innerPanel qaPanel">
-                                <h3>QA</h3>
+                            <div className="doc-header">
+                                <h2>QA</h2> 
+                            </div>
                             {this.state.data ? this.state.data.map((x, i) => {
                             let link = "/" + x.slug
                             if (x.freq >= 200) {
