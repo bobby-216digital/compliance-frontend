@@ -144,7 +144,8 @@ class Admin extends React.Component {
                             let link = "/" + x.slug
                             return(
                                <div key={i} className="siteLine">
-                                   <a target="_new" href={link}>{x.url}</a>
+                                   <a target="_blank" href={link}>{x.url}</a>&nbsp;|&nbsp;
+                                   <a target="_blank" href={"/qa" + link}>QA</a>
                                </div> 
                             )
                         }) : ""}
