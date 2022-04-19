@@ -540,6 +540,15 @@ input, select, option, textarea {
   padding: 0px 12px;
 }
 
+.calendly-inline-widget {
+  height: 1100px;
+  width: 100%;
+}
+
+.schedule-form {
+  width: calc(100% - 48px);
+}
+
 
 @media screen and (max-width: 800px) {
   .third, .two-thirds, .card {

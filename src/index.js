@@ -11,6 +11,7 @@ import Admin from './Admin'
 import Header from './components/Header'
 import Contact from './components/Contact'
 import Splash from './components/Splash'
+import Schedule from './components/Schedule'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,6 +26,7 @@ ReactDOM.render(
           <Route path="/:url/contact" element={<Contact />} />
           <Route path="/qa/:url" element={<App qa={true} />} />
           <Route path="/thanks" element={<div className="card">Thanks for reaching out! One of our experts will be in touch shortly.</div>} />
+          <Route path="/schedule" element={<Schedule />} />
       </Routes>
     </Router>
     </main>
