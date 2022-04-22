@@ -52,6 +52,8 @@ button, .btn {
   padding: 6px 12px;
   margin: 12px 0px;
   cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
 }
 
 h2 {
@@ -538,6 +540,10 @@ input, select, option, textarea {
   display: inline-block;
   vertical-align: top;
   padding: 0px 12px;
+}
+
+.siteLine .btn, .siteLine button {
+  margin: 6px;
 }
 
 

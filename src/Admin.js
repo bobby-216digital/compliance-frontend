@@ -22,6 +22,7 @@ class Admin extends React.Component {
         this.doChange = this.doChange.bind(this);
         this.onboard = this.onboard.bind(this);
         this.initData = this.initData.bind(this);
+        this.newScan = this.newScan.bind(this);
     }
 
     componentDidUpdate() {
@@ -100,6 +101,27 @@ class Admin extends React.Component {
             
     }
 
+    newScan(url) {
+        console.log(url)
+        fetch('https://a11y-server.herokuapp.com/newscan', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "url": `${url}`
+            })
+        })
+            .then(data => {
+                this.initData(true);
+                console.log(data.body)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     doChange(event) {
 
             const target = event.target;
@@ -150,8 +172,9 @@ class Admin extends React.Component {
                             if (x.freq < 200) {
                                 return(
                                <div key={i} className="siteLine">
-                                   <a target="_blank" href={link}>{x.url}</a>&nbsp;|&nbsp;
-                                   <a target="_blank" href={"/qa" + link}>QA</a>
+                                   <a target="_blank" href={link}>{x.url}</a>
+                                   <a target="_blank" class="btn" href={"/qa" + link}>QA</a>
+                                   <button onClick={() => this.newScan(x.url)}>New Scan</button>
                                </div> 
                             )
                             }
@@ -167,8 +190,8 @@ class Admin extends React.Component {
                             if (x.freq >= 200) {
                                 return(
                                <div key={i} className="siteLine">
-                                   <a target="_blank" href={link}>{x.url}</a>&nbsp;|&nbsp;
-                                   <a target="_blank" href={"/qa" + link}>QA</a>
+                                   <a target="_blank" href={"/qa" + link}>{x.url}</a>
+                                   <button onClick={() => this.newScan(x.url)}>New Scan</button>
                                </div> 
                             )
                             }
