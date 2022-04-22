@@ -545,6 +545,14 @@ input, select, option, textarea {
 .siteLine .btn, .siteLine button {
   margin: 6px;
 }
+.calendly-inline-widget {
+  height: 1100px;
+  width: 100%;
+}
+
+.schedule-form {
+  width: calc(100% - 48px);
+}
 
 
 @media screen and (max-width: 800px) {
