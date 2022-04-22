@@ -2,7 +2,16 @@ import React from "react";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-export default class TrialForm extends React.Component {
+export default function TrialForm() {
+    let navigate = useNavigate();
+    return (
+        <React.Fragment>
+            <Trial navigate={navigate} />
+        </React.Fragment>
+    )
+}
+
+class Trial extends React.Component {
     constructor(props) {
         super(props);
 
