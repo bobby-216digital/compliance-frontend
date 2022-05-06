@@ -189,6 +189,7 @@ class Admin extends React.Component {
                         <label htmlFor="lhscore">Scan</label>
                         <input id="lhscore" type="text" value={this.state.lhscore} name="lhscore" onChange={(x) => this.doChange(x)} />
                         <button onClick={() => this.addLighthouse()}>Submit</button>
+                        <a class="btn" href="https://a11y-server.herokuapp.com/sortsite" target="_new">View queue</a>
                     </div>
                     <div className="card">
                         <h2>Sites</h2>
