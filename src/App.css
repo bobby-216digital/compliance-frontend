@@ -566,6 +566,11 @@ input, select, option, textarea {
   float: right;
 }
 
+.fullWidth {
+  width: 100%;
+  display: block;
+}
+
 @media screen and (max-width: 800px) {
   .third, .two-thirds, .card {
     width: 100%;

@@ -162,7 +162,7 @@ class Admin extends React.Component {
         if (this.state.isAuth) {
             return (
                 <React.Fragment>
-                    <div className="card">
+                    <div className="card fullWidth">
                         <h1>Admin</h1>
                     </div>
                     <div className="card">
