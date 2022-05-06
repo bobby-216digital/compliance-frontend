@@ -571,6 +571,11 @@ input, select, option, textarea {
   display: block;
 }
 
+.qa-inner {
+  max-height: 600px;
+  overflow: scroll;
+}
+
 @media screen and (max-width: 800px) {
   .third, .two-thirds, .card {
     width: 100%;

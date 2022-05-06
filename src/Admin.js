@@ -216,7 +216,8 @@ class Admin extends React.Component {
                             <div className="doc-header">
                                 <h2>QA</h2> 
                             </div>
-                            {this.state.data ? this.state.data.map((x, i) => {
+                            <div className="qa-inner">
+                                {this.state.data ? this.state.data.map((x, i) => {
                             let link = "/" + x.slug
                             if (x.freq >= 200) {
                                 return(
@@ -228,7 +229,9 @@ class Admin extends React.Component {
                             )
                             }
                             
-                        }) : ""}  
+                        }) : ""} 
+                            </div>
+                             
                             </div>
                         </div>
                         
