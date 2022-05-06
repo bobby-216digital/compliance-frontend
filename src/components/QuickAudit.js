@@ -48,8 +48,8 @@ export default class QuickAudit extends React.Component {
                     <CompliancePanel qa={true} data={data} levels={this.props.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
                 </div>
                 <div className="inner-card card quarter">
-                    <h2>Lighthouse (Accessibility) {lhScore < 90 ? " ⚠️" : ""}</h2>
-                    <div className="subtext grey">90 or above</div>
+                    <h2>Lighthouse {lhScore < 90 ? " ⚠️" : ""}</h2>
+                    <div className="subtext grey">90 or above (Accessibility)</div>
                     <div className="lh-graph">
                         <svg width="180" height="180" viewBox="0 0 36 36">
                             <path
