@@ -15,7 +15,9 @@ class Admin extends React.Component {
             thresholda: "",
             thresholdaa: "",
             passcode: "",
-            data: false
+            data: false,
+            lhurl: "",
+            lhscore: ""
         }
 
         this.doAuth = this.doAuth.bind(this);
@@ -122,6 +124,28 @@ class Admin extends React.Component {
             })
     }
 
+    addLighthouse() {
+        console.log(url)
+        fetch('https://a11y-server.herokuapp.com/addlighthouse', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "url": `${this.state.lhurl}`,
+                "score": `${parseInt(this.state.lhscore)}`
+            })
+        })
+            .then(data => {
+                this.initData(true);
+                console.log(data.body)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     doChange(event) {
 
             const target = event.target;
@@ -159,6 +183,12 @@ class Admin extends React.Component {
                         <input id="passcode" type="text" value={this.state.passcode} name="passcode" onChange={(x) => this.doChange(x)} />
                         <button onClick={() => this.onboard()}>Submit</button>
                         <p>{this.state.error}</p>
+                        <h2>Add Lighthouse Scan</h2>
+                        <label htmlFor="lhurl">URL</label>
+                        <input id="lhurl" type="text" value={this.state.lhurl} name="lhurl" onChange={(x) => this.doChange(x)} />
+                        <label htmlFor="lhscore">Scan</label>
+                        <input id="lhscore" type="text" value={this.state.lhscore} name="lhscore" onChange={(x) => this.doChange(x)} />
+                        <button onClick={() => this.addLighthouse()}>Submit</button>
                     </div>
                     <div className="card">
                         <h2>Sites</h2>
