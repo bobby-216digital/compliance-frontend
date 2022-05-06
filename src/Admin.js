@@ -25,6 +25,7 @@ class Admin extends React.Component {
         this.onboard = this.onboard.bind(this);
         this.initData = this.initData.bind(this);
         this.newScan = this.newScan.bind(this);
+        this.addLighthouse = this.addLighthouse.bind(this);
     }
 
     componentDidUpdate() {
