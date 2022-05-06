@@ -562,7 +562,7 @@ input, select, option, textarea {
   height: 42px;
 }
 
-.siteLine button {
+.siteLine button, .siteLine .btn {
   float: right;
 }
 
