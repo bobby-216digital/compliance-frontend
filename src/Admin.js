@@ -218,7 +218,6 @@ class Admin extends React.Component {
                             {this.state.data ? this.state.data.map((x, i) => {
                             let link = "/" + x.slug
                             if (x.freq >= 200) {
-                                console.log(x)
                                 return(
                                <div key={i} className="siteLine">
                                    {x.newscan == true ? "⏰" : ""}
