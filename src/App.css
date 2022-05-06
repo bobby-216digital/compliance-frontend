@@ -554,6 +554,17 @@ input, select, option, textarea {
   width: calc(100% - 48px);
 }
 
+.tabPanel .innerPanel {
+  width: 450px;
+}
+
+.siteLine {
+  height: 42px;
+}
+
+.siteLine button {
+  float: right;
+}
 
 @media screen and (max-width: 800px) {
   .third, .two-thirds, .card {
