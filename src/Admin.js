@@ -210,7 +210,8 @@ class Admin extends React.Component {
                                 </div>
                               {this.state.data ? this.state.data.map((x, i) => {
                             let link = x ? "/" + x.slug : "";
-                            if (x.freq < 200) {
+                            if (x) {
+                                if (x.freq < 200) {
                                 return(
                                <div key={i} className="siteLine">
                                     {x.newscan == true ? "⏰" : ""}
@@ -221,6 +222,8 @@ class Admin extends React.Component {
                                </div> 
                             )
                             }
+                            }
+                            
                             
                         }) : ""}  
                             </div>
@@ -231,7 +234,8 @@ class Admin extends React.Component {
                             <div className="qa-inner">
                                 {this.state.data ? this.state.data.map((x, i) => {
                             let link = x ? "/" + x.slug : "";
-                            if (x.freq >= 200) {
+                            if (x) {
+                                 if (x.freq >= 200) {
                                 return(
                                <div key={i} className="siteLine">
                                    {x.newscan == true ? "⏰" : ""}
@@ -241,6 +245,8 @@ class Admin extends React.Component {
                                </div> 
                             )
                             }
+                            }
+                           
                             
                         }) : ""} 
                             </div>
