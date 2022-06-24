@@ -209,7 +209,7 @@ class Admin extends React.Component {
                                     <h2>Ongoing</h2>
                                 </div>
                               {this.state.data ? this.state.data.map((x, i) => {
-                            let link = "/" + x.slug;
+                            let link = x ? "/" + x.slug : "";
                             if (x.freq < 200) {
                                 return(
                                <div key={i} className="siteLine">
@@ -230,7 +230,7 @@ class Admin extends React.Component {
                             </div>
                             <div className="qa-inner">
                                 {this.state.data ? this.state.data.map((x, i) => {
-                            let link = "/" + x.slug;
+                            let link = x ? "/" + x.slug : "";
                             if (x.freq >= 200) {
                                 return(
                                <div key={i} className="siteLine">
