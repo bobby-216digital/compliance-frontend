@@ -200,7 +200,8 @@ class Admin extends React.Component {
                                     <h2>Ongoing</h2>
                                 </div>
                               {this.state.data ? this.state.data.map((x, i) => {
-                            let link = "/" + x.slug
+                            let link = "/" + x.slug;
+                            let delLink = 'https://a11y-server.herokuapp.com/delete/' + x.slug;
                             if (x.freq < 200) {
                                 return(
                                <div key={i} className="siteLine">
@@ -208,6 +209,7 @@ class Admin extends React.Component {
                                    <a target="_blank" href={link}>{x.url}</a>
                                    <a target="_blank" class="btn" href={"/qa" + link}>QA</a>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
+                                   <a href={delLink} class="btn">Delete</a>
                                </div> 
                             )
                             }
@@ -220,13 +222,15 @@ class Admin extends React.Component {
                             </div>
                             <div className="qa-inner">
                                 {this.state.data ? this.state.data.map((x, i) => {
-                            let link = "/" + x.slug
+                            let link = "/" + x.slug;
+                            let delLink = 'https://a11y-server.herokuapp.com/delete/' + x.slug;
                             if (x.freq >= 200) {
                                 return(
                                <div key={i} className="siteLine">
                                    {x.newscan == true ? "⏰" : ""}
                                    <a target="_blank" href={"/qa" + link}>{x.url}</a>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
+                                   <a href={delLink} class="btn">Delete</a>
                                </div> 
                             )
                             }
