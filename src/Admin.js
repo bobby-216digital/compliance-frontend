@@ -26,6 +26,7 @@ class Admin extends React.Component {
         this.initData = this.initData.bind(this);
         this.newScan = this.newScan.bind(this);
         this.addLighthouse = this.addLighthouse.bind(this);
+        this.deleteSite = this.deleteSite.bind(this);
     }
 
     componentDidUpdate() {
@@ -159,6 +160,12 @@ class Admin extends React.Component {
 
     }
 
+    deleteSite(slug) {
+        fetch('https://a11y-server.herokuapp.com/delete/' + slug).then(function(response) {
+            this.initData(true);
+          })
+    }
+
     render() {
         if (this.state.isAuth) {
             return (
@@ -201,7 +208,6 @@ class Admin extends React.Component {
                                 </div>
                               {this.state.data ? this.state.data.map((x, i) => {
                             let link = "/" + x.slug;
-                            let delLink = 'https://a11y-server.herokuapp.com/delete/' + x.slug;
                             if (x.freq < 200) {
                                 return(
                                <div key={i} className="siteLine">
@@ -209,7 +215,7 @@ class Admin extends React.Component {
                                    <a target="_blank" href={link}>{x.url}</a>
                                    <a target="_blank" class="btn" href={"/qa" + link}>QA</a>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
-                                   <a target="_blank" href={delLink} class="btn">Delete</a>
+                                   <button onClick={() => this.newScan(x.slug)}>Delete</button>
                                </div> 
                             )
                             }
@@ -223,14 +229,13 @@ class Admin extends React.Component {
                             <div className="qa-inner">
                                 {this.state.data ? this.state.data.map((x, i) => {
                             let link = "/" + x.slug;
-                            let delLink = 'https://a11y-server.herokuapp.com/delete/' + x.slug;
                             if (x.freq >= 200) {
                                 return(
                                <div key={i} className="siteLine">
                                    {x.newscan == true ? "⏰" : ""}
                                    <a target="_blank" href={"/qa" + link}>{x.url}</a>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
-                                   <a target="_blank" href={delLink} class="btn">Delete</a>
+                                   <button onClick={() => this.newScan(x.slug)}>Delete</button>
                                </div> 
                             )
                             }
