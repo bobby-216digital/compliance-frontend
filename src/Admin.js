@@ -215,7 +215,7 @@ class Admin extends React.Component {
                                    <a target="_blank" href={link}>{x.url}</a>
                                    <a target="_blank" class="btn" href={"/qa" + link}>QA</a>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
-                                   <button onClick={() => this.newScan(x.slug)}>Delete</button>
+                                   <button onClick={() => this.deleteSite(x.slug)}>Delete</button>
                                </div> 
                             )
                             }
@@ -235,7 +235,7 @@ class Admin extends React.Component {
                                    {x.newscan == true ? "⏰" : ""}
                                    <a target="_blank" href={"/qa" + link}>{x.url}</a>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
-                                   <button onClick={() => this.newScan(x.slug)}>Delete</button>
+                                   <button onClick={() => this.deleteSite(x.slug)}>Delete</button>
                                </div> 
                             )
                             }
