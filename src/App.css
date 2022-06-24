@@ -558,6 +558,10 @@ input, select, option, textarea {
   width: 500px;
 }
 
+.hidden {
+  display: none;
+}
+
 .siteLine {
   height: 42px;
 }
