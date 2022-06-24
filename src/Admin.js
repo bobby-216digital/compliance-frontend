@@ -204,7 +204,7 @@ class Admin extends React.Component {
                             if (x.freq < 200) {
                                 return(
                                <div key={i} className="siteLine">
-                                    {x.newscan == true || x.sortsite.length == 0 ? "⏰" : ""}
+                                    {x.newscan == true || !x.sortsite ? "⏰" : ""}
                                    <a target="_blank" href={link}>{x.url}</a>
                                    <a target="_blank" class="btn" href={"/qa" + link}>QA</a>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
