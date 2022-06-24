@@ -161,9 +161,11 @@ class Admin extends React.Component {
     }
 
     deleteSite(slug) {
-        fetch('https://a11y-server.herokuapp.com/delete/' + slug).then(function(response) {
+        fetch('https://a11y-server.herokuapp.com/delete/' + slug)
+        .then((res) => {
             this.initData(true);
-          })
+            console.log(res)
+        })
     }
 
     render() {
