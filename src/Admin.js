@@ -169,7 +169,7 @@ class Admin extends React.Component {
     }
 
     render() {
-        if (this.state.isAuth) {
+        if (this.state.isAuth && this.state.data) {
             return (
                 <React.Fragment>
                     <div className="card fullWidth">
