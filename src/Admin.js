@@ -183,7 +183,7 @@ class Admin extends React.Component {
                         <input id="freq" type="text" value={this.state.freq} name="freq" onChange={(x) => this.doChange(x)} />
                         <label htmlFor="url">Site Slug (e.g. 'nike')</label>
                         <input id="slug" type="text" value={this.state.slug} name="slug" onChange={(x) => this.doChange(x)} />
-                        <label htmlFor="contacts">Contacts (comma separated)</label>
+                        <label htmlFor="contacts">Contacts (comma + space separated ", ")</label>
                         <input id="contacts" type="text" value={this.state.contacts} name="contacts" onChange={(x) => this.doChange(x)} />
                         <label htmlFor="thresholda">Level A Threshold</label>
                         <input id="thresholda" type="text" value={this.state.thresholda} name="thresholda" onChange={(x) => this.doChange(x)} />
