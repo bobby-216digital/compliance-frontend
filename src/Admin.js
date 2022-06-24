@@ -198,7 +198,7 @@ class Admin extends React.Component {
                         <input id="url" type="text" value={this.state.url} name="url" onChange={(x) => this.doChange(x)} />
                         <input class="hidden" id="freq" type="text" value="9999" name="freq" onChange={(x) => this.doChange(x)} />
                         <label htmlFor="url">Site Slug (e.g. 'nike')</label>
-                        <input class="hidden" id="slug" type="text" value={this.state.slug} name="slug" onChange={(x) => this.doChange(x)} />
+                        <input id="slug" type="text" value={this.state.slug} name="slug" onChange={(x) => this.doChange(x)} />
                         <input class="hidden" id="contacts" type="text" value="info@a11yradar.com" name="contacts" onChange={(x) => this.doChange(x)} />
                         <input class="hidden" id="thresholda" type="text" value="10" name="thresholda" onChange={(x) => this.doChange(x)} />
                         <input class="hidden" id="thresholdaa" type="text" value="5" name="thresholdaa" onChange={(x) => this.doChange(x)} />
