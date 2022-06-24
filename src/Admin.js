@@ -193,18 +193,6 @@ class Admin extends React.Component {
                         <input id="passcode" type="text" value={this.state.passcode} name="passcode" onChange={(x) => this.doChange(x)} />
                         <button onClick={() => this.onboard()}>Submit</button>
                         <p>{this.state.error}</p>
-                        <h2>QA Onboard</h2>
-                        <label htmlFor="url">Site URL</label>
-                        <input id="url" type="text" value={this.state.url} name="url" onChange={(x) => this.doChange(x)} />
-                        <input class="hidden" id="freq" type="text" value="9999" name="freq" onChange={(x) => this.doChange(x)} />
-                        <label htmlFor="url">Site Slug (e.g. 'nike')</label>
-                        <input id="slug" type="text" value={this.state.slug} name="slug" onChange={(x) => this.doChange(x)} />
-                        <input class="hidden" id="contacts" type="text" value="info@a11yradar.com" name="contacts" onChange={(x) => this.doChange(x)} />
-                        <input class="hidden" id="thresholda" type="text" value="10" name="thresholda" onChange={(x) => this.doChange(x)} />
-                        <input class="hidden" id="thresholdaa" type="text" value="5" name="thresholdaa" onChange={(x) => this.doChange(x)} />
-                        <input class="hidden" id="passcode" type="text" value="fdhdfgh" name="passcode" onChange={(x) => this.doChange(x)} />
-                        <button onClick={() => this.onboard()}>Submit</button>
-                        <p>{this.state.error}</p>
                         <h2>Add Lighthouse Scan</h2>
                         <label htmlFor="lhurl">URL</label>
                         <input id="lhurl" type="text" value={this.state.lhurl} name="lhurl" onChange={(x) => this.doChange(x)} />
