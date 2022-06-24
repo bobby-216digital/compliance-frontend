@@ -232,7 +232,7 @@ class Admin extends React.Component {
                                 <h2>QA</h2> 
                             </div>
                             <div className="qa-inner">
-                                {this.state.data ? this.state.data.map((x, i) => {
+                                {this.state.data ? this.state.data.slice(0).reverse().map((x, i) => {
                             let link = x ? "/" + x.slug : "";
                             if (x) {
                                  if (x.freq >= 200) {
