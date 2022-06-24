@@ -41,7 +41,7 @@ export default class QuickAudit extends React.Component {
             <div className="doc-wrapper card">
                 <div className="doc-header">
                     <h2>WCAG 2.1 AA Issue Report</h2>
-                    <span class="right">Site: {data.url}<br />
+                    <span class="right">Site: <a href={data.url} target="_new">{data.url}</a><br />
                     Date: {new Date(data.sortsite[data.sortsite.length - 1].date).toLocaleDateString()}</span>
                 </div>
                 <div className="inner-card card half">
