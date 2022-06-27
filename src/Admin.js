@@ -205,7 +205,8 @@ class Admin extends React.Component {
                                 <div className="doc-header">
                                     <h2>Ongoing</h2>
                                 </div>
-                              {this.state.data ? this.state.data.map((x, i) => {
+                                <div className="qa-inner">
+                                    {this.state.data ? this.state.data.map((x, i) => {
                             let link = x ? "/" + x.slug : "";
                             if (x) {
                                 if (x.freq < 200) {
@@ -220,9 +221,9 @@ class Admin extends React.Component {
                             )
                             }
                             }
-                            
-                            
                         }) : ""}  
+                                </div>
+                              
                             </div>
                             <div className="innerPanel qaPanel">
                             <div className="doc-header">
