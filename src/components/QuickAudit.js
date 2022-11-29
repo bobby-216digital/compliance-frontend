@@ -8,9 +8,9 @@ class WaveErrors extends React.Component {
     }
     render() {
         console.log(this.props);
-        if (this.props.wave[this.props.wave.length - 1].issues.length > 0) {
+        if (this.props.wave[this.props.ssIndex].issues.length > 0) {
             return (
-                this.props.wave[this.props.wave.length - 1].issues.map((x, i) => {
+                this.props.wave[this.props.ssIndex].issues.map((x, i) => {
                     return(
                         <div className={i % 2 !== 0 ? "issue odd" : "issue even"}>
                             <div className="cat">{x.description}</div>
@@ -34,15 +34,22 @@ export default class QuickAudit extends React.Component {
         console.log(this.props)
         const data = this.props.data;
         let lhScore = 0;
-        if (data.lighthouse[data.lighthouse.length - 1]) {
-            lhScore = data.lighthouse[data.lighthouse.length - 1].score;
+        if (data.lighthouse[this.props.ssIndex]) {
+            lhScore = data.lighthouse[this.props.ssIndex].score;
         }
+
+        console.log(data, this.props.ssIndex)
+        let waveCount = 0;
+        data.wave[this.props.ssIndex].issues.map((x) => {
+            waveCount += x.count;
+        })
         return (
             <div className="doc-wrapper card">
+                <a href={"/" + data.slug} className="returnLink btn">Return to Dashboard</a>
                 <div className="doc-header">
                     <h2>WCAG 2.1 AA Issue Report</h2>
                     <span class="right">Site: <a href={data.url} target="_new">{data.url}</a><br />
-                    Date: {new Date(data.sortsite[data.sortsite.length - 1].date).toLocaleDateString()}</span>
+                    Date: {new Date(data.sortsite[this.props.ssIndex].date).toLocaleDateString()}</span>
                 </div>
                 <div className="inner-card card half">
                     <CompliancePanel qa={true} data={data} levels={this.props.levels} thresholda={data.thresholda} thresholdaa={data.thresholdaa} />
@@ -66,10 +73,10 @@ export default class QuickAudit extends React.Component {
                     </div>
                 </div>
                 <div className="inner-card card wave-card quarter">
-                    <h2>Wave{this.props.waveCount > 5 ? " ⚠️" : ""}</h2>
+                    <h2>Wave{waveCount > 5 ? " ⚠️" : ""}</h2>
                     <div className="subtext grey">5 or less</div>
                     <div className="wave-score">
-                        {this.props.waveCount}<br />
+                        {waveCount}<br />
                         <span className="wave-text">Errors</span>
                     </div>
                 </div>
@@ -84,7 +91,7 @@ export default class QuickAudit extends React.Component {
                 </div>
                 <div className="card issues">
                     <div className="issuePanel">
-                            <WaveErrors wave={data.wave} />
+                            <WaveErrors ssIndex={this.props.ssIndex} wave={data.wave} />
                         </div>
                 </div>
                 <div className="cta doc-header">

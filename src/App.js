@@ -10,11 +10,11 @@ import QuickAudit from './components/QuickAudit';
 import { useParams } from 'react-router-dom';
 
 function App(props) {
-  let { url } = useParams();
+  let { url, date } = useParams();
   console.log(url)
   return (
     <React.Fragment>
-      <Panel url={url} qa={props.qa} />
+      <Panel url={url} qa={props.qa} date={date} />
     </React.Fragment>
   )
 }
@@ -46,7 +46,21 @@ class Panel extends React.Component {
 
   initData(data) {
     if (data.sortsite[0]) {
-      let sortsite = JSON.parse(decodeURIComponent(data.sortsite[data.sortsite.length - 1].issues));
+      let sortsite, ssIndex; 
+
+      console.log(this.props.date)
+      
+      if (this.props.date) {
+        data.sortsite.map((x, i) => {
+          if (x.date == this.props.date) {
+            sortsite = JSON.parse(decodeURIComponent(data.sortsite[i].issues));
+            ssIndex = i;
+          }
+        })
+      } else {
+        sortsite = JSON.parse(decodeURIComponent(data.sortsite[data.sortsite.length - 1].issues));
+      }
+      
       console.log(sortsite);
       let obj = {}
       let levels = [0, 0, 0];
@@ -71,7 +85,8 @@ class Panel extends React.Component {
         levels: levels,
         issues: obj,
         waveCount: waveCount,
-        sortsite: sortsite
+        sortsite: sortsite,
+        ssIndex: ssIndex
       })
     } else {
       this.setState({
@@ -102,7 +117,7 @@ class Panel extends React.Component {
       return(<h2>Loading data...</h2>)
     }
     if (this.props.qa == true) {
-      return (<QuickAudit sortsite={this.state.sortsite} waveCount={this.state.waveCount} data={data} levels={this.state.levels} issues={this.state.issues} />)
+      return (<QuickAudit ssIndex={this.state.ssIndex} sortsite={this.state.sortsite} waveCount={this.state.waveCount} data={data} levels={this.state.levels} issues={this.state.issues} />)
     } else {
     return (
       <React.Fragment>

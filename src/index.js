@@ -26,6 +26,7 @@ ReactDOM.render(
           <Route path="/contact" element={<Contact />} />
           <Route path="/:url/contact" element={<Contact />} />
           <Route path="/qa/:url" element={<App qa={true} />} />
+          <Route path="/qa/:url/:date" element={<App qa={true} />} />
           <Route path="/thanks" element={<div className="card">Thanks for reaching out! One of our experts will be in touch shortly.</div>} />
           <Route path="/trial" element={<TrailForm />} />
           <Route path="/schedule" element={<Schedule />} />

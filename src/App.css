@@ -618,3 +618,10 @@ input, select, option, textarea {
   font-size: 12px;
   margin-right: 6px;
 }
+
+.returnLink {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 99999;
+}

@@ -12,6 +12,7 @@ class GraphLines extends React.Component {
 
         this.doHover = this.doHover.bind(this);
         this.doLeave = this.doLeave.bind(this);
+        this.doClick = this.doClick.bind(this);
         this.tooltip = React.createRef();
     }
     doHover(x) {
@@ -26,6 +27,9 @@ class GraphLines extends React.Component {
         this.setState({
             hoverClass: "tooltip"
         })
+    }
+    doClick(x, i) {
+        window.location.replace("/qa/" + this.props.data.slug + "/" + this.props.data.sortsite[i].date)
     }
     render() {
         let xunit = this.props.xunit;
@@ -73,7 +77,7 @@ class GraphLines extends React.Component {
                         <rect id="Sales-3" data-name="Sales" width="8" height="8" rx="4" transform="translate(44 58)" fill="#1e252d"/>
                     </svg>
                     {this.props.normalizedDates.map((x, i) => {
-                        return (<line date={i} onMouseEnter={(x) => this.doHover(x)} onMouseLeave={(x) => this.doLeave(x)} key={i + 999} x1={x} y1="0" x2={x} y2={yunit * 10} className="hoverLine" />)
+                        return (<line date={i} onClick={(x => this.doClick(x, i))} onMouseEnter={(x) => this.doHover(x)} onMouseLeave={(x) => this.doLeave(x)} key={i + 999} x1={x} y1="0" x2={x} y2={yunit * 10} className="hoverLine" />)
                     })}
                 </React.Fragment>
                 
@@ -168,7 +172,7 @@ class ComplianceGraph extends React.Component {
                         <text className="dateText" x={xunit * -1} y={yunit * 4}>30</text>
                         <text className="dateText" x={xunit * -1} y={yunit * 2}>40</text>
                         <text className="dateText" x={xunit * -1} y="11">50</text>
-                        <GraphLines vals={this.state.vals} xunit={xunit} yunit={yunit} points={this.state.points} normalizedDates={this.state.normalizedDates} dates={this.state.dates} />
+                        <GraphLines data={this.props.data} vals={this.state.vals} xunit={xunit} yunit={yunit} points={this.state.points} normalizedDates={this.state.normalizedDates} dates={this.state.dates} />
                     </svg> 
                 </div>
             </div>
