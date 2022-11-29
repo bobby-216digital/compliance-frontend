@@ -342,15 +342,29 @@ main {
   cursor: pointer;
 }
 
-.issue:hover {
+.issue:focus, .issue:focus-within {
   height: fit-content;
   max-height: inherit;
-  border: 1px solid #CCC;
 }
 
-.issue:hover > .cat {
+.issue:focus > .cat, .issue:focus-within > .cat {
   white-space: inherit;
   overflow: inherit;
+}
+
+.issue:focus .chev, .issue:focus-within .chev {
+  transform: rotate(0deg);
+}
+
+.issue, .chev {
+  transition: all 0.2s ease-in-out;
+}
+
+.chev {
+  transform: rotate(-90deg);
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
 }
 
 .issuePanel h3, .noticePanel h2 {
@@ -586,4 +600,21 @@ input, select, option, textarea {
     max-width: calc(100% - 76px);
     height: fit-content !important;
   }
+}
+
+.issueDrop {
+  margin-top: 2px;
+  padding: 12px;
+  border: 1px solid var(--darkblue);
+  background-color: white;
+}
+
+.issueInner {
+  padding: 6px 12px;
+  position: relative;
+}
+
+.chev {
+  font-size: 12px;
+  margin-right: 6px;
 }
