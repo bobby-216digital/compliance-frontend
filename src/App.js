@@ -27,7 +27,8 @@ class Panel extends React.Component {
       levels: ["X", "X", "X"],
       issues: false,
       waveCount: 0,
-      sortsite: null
+      sortsite: null,
+      ssIndex: 0
     }
 
     this.initData = this.initData.bind(this);
@@ -59,6 +60,7 @@ class Panel extends React.Component {
         })
       } else {
         sortsite = JSON.parse(decodeURIComponent(data.sortsite[data.sortsite.length - 1].issues));
+        ssIndex = data.sortsite.length - 1;
       }
       
       console.log(sortsite);
