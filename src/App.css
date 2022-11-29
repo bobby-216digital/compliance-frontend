@@ -625,3 +625,13 @@ input, select, option, textarea {
   right: 24px;
   z-index: 99999;
 }
+
+.reportBtn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+.card {
+  position: relative;
+}

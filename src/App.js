@@ -132,7 +132,7 @@ class Panel extends React.Component {
           <TextCard subtext={"Last Scan Date"} text={data ? lastDate : "X/XX/XXXX"} />
           <TextCard subtext={"Next Scan Date"} text={data ? nextDate : "X/XX/XXXX"} />
           <div className="card">
-            <h2>Outstanding Issues</h2>
+            <h2>Outstanding Issues</h2><a href={"/qa/" + data.slug} class="btn reportBtn">View report</a>
             <IssuePanel sortsite={this.state.sortsite} levels={this.state.levels} issues={this.state.issues} />
           </div>
         </div>

@@ -169,6 +169,7 @@ class Admin extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         if (this.state.isAuth && this.state.data) {
             return (
                 <React.Fragment>
