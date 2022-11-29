@@ -45,7 +45,7 @@ export default class QuickAudit extends React.Component {
         })
         return (
             <div className="doc-wrapper card">
-                <a href={"/" + data.slug} className="returnLink btn">Return to Dashboard</a>
+                {data.freq < 200 ? <a href={"/" + data.slug} className="returnLink btn">Return to Dashboard</a> : "" }
                 <div className="doc-header">
                     <h2>WCAG 2.1 AA Issue Report</h2>
                     <span class="right">Site: <a href={data.url} target="_new">{data.url}</a><br />
