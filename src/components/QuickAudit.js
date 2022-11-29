@@ -8,9 +8,15 @@ class WaveErrors extends React.Component {
     }
     render() {
         console.log(this.props);
-        if (this.props.wave[this.props.ssIndex].issues.length > 0) {
+        let waveIndex = this.props.wave.length - 1;
+        if (this.props.ssIndex == this.props.wave.length - 1) {
+            waveIndex = this.props.ssIndex
+        }
+        
+        console.log(waveIndex, this.props.wave)
+        if (this.props.wave[waveIndex].issues.length > 0) {
             return (
-                this.props.wave[this.props.ssIndex].issues.map((x, i) => {
+                this.props.wave[waveIndex].issues.map((x, i) => {
                     return(
                         <div className={i % 2 !== 0 ? "issue odd" : "issue even"}>
                             <div className="cat">{x.description}</div>
@@ -40,9 +46,16 @@ export default class QuickAudit extends React.Component {
 
         console.log(data, this.props.ssIndex)
         let waveCount = 0;
-        data.wave[this.props.ssIndex].issues.map((x) => {
-            waveCount += x.count;
-        })
+        if (data.wave[this.props.ssIndex]) {
+            data.wave[this.props.ssIndex].issues.map((x) => {
+                waveCount += x.count;
+            })
+        } else {
+            data.wave[data.wave.length - 1].issues.map((x) => {
+                waveCount += x.count;
+            })
+        }
+        
         return (
             <div className="doc-wrapper card">
                 {data.freq < 200 ? <a href={"/" + data.slug} className="returnLink btn">Return to Dashboard</a> : "" }
