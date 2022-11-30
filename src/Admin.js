@@ -17,7 +17,9 @@ class Admin extends React.Component {
             passcode: "pass",
             data: false,
             lhurl: "",
-            lhscore: ""
+            lhscore: "",
+            premium: false,
+            modalOpen: false
         }
 
         this.doAuth = this.doAuth.bind(this);
@@ -27,6 +29,9 @@ class Admin extends React.Component {
         this.newScan = this.newScan.bind(this);
         this.addLighthouse = this.addLighthouse.bind(this);
         this.deleteSite = this.deleteSite.bind(this);
+        this.editSite = this.editSite.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+        this.doEdit = this.doEdit.bind(this);
     }
 
     componentDidUpdate() {
@@ -89,7 +94,8 @@ class Admin extends React.Component {
                 "contacts": `${this.state.contacts}`,
                 "thresholda": `${this.state.thresholda}`,
                 "thresholdaa": `${this.state.thresholdaa}`,
-                "passcode": `${this.state.passcode}`
+                "passcode": `${this.state.passcode}`,
+                "premium": `${this.state.premium}`
             })
         })
             .then(data => {
@@ -117,13 +123,13 @@ class Admin extends React.Component {
                 "url": `${url}`
             })
         })
-            .then(data => {
-                this.initData(true);
-                console.log(data.body)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        .then(data => {
+            this.initData(true);
+            console.log(data.body)
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
 
     addLighthouse() {
@@ -168,11 +174,93 @@ class Admin extends React.Component {
         })
     }
 
+    editSite(slug) {
+        let data;
+
+        fetch("https://a11y-server.herokuapp.com/site/" + slug)
+        .then(response => response.json())
+        .then(data => {
+            let siteData = data.data.querySite[0];
+
+            console.log(siteData)
+
+            this.setState({
+                url: siteData.url,
+                slug: siteData.slug,
+                freq: siteData.freq,
+                thresholda: siteData.thresholda,
+                thresholdaa: siteData.thresholdaa,
+                contacts: siteData.contacts.join(", "),
+                modalOpen: true
+            })
+        });
+    }
+
+    doEdit() {
+        fetch('https://a11y-server.herokuapp.com/edit/' + this.state.slug, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "slug": `${this.state.slug}`,
+                "freq": `${this.state.freq}`,
+                "premium": `${this.state.premium}`,
+                "contacts": `${this.state.contacts}`,
+                "thresholda": `${this.state.thresholda}`,
+                "thresholdaa": `${this.state.thresholdaa}`
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            this.setState({
+                modalOpen: false,
+                error: "Successfully updated"
+            })
+            console.log(data.body)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
+    closeModal() {
+        this.setState({
+            modalOpen: false
+        })
+    }
+
     render() {
         console.log(this.state)
         if (this.state.isAuth && this.state.data) {
             return (
                 <React.Fragment>
+                    <div className="modalOverlay" onClick={(x) => this.closeModal(x)} style={{ opacity: this.state.modalOpen ? "0.3" : "0", display: this.state.modalOpen ? "block" : "none" }}></div>
+                    <div className="modal" aria-hidden="true" style={{ top: this.state.modalOpen ? "20%" : "-200%", opacity: this.state.modalOpen ? "1" : "0"}}>
+                        <div className="modalInner">
+                            <button style={{ float: 'right' }} onClick={() => this.closeModal()}>X</button>
+                            <h2>Edit Site</h2>
+                            <label htmlFor="editurl">Site URL</label>
+                            <input id="editurl" type="text" value={this.state.url} name="url" disabled />
+                            <label htmlFor="editurl">Scan Frequency (in days)</label>
+                            <input id="editfreq" type="text" value={this.state.freq} name="freq" onChange={(x) => this.doChange(x)} />
+                            <label htmlFor="editurl">Site Slug (e.g. 'nike')</label>
+                            <input id="editslug" type="text" value={this.state.slug} name="slug" onChange={(x) => this.doChange(x)} disabled />
+                            <label htmlFor="editcontacts">Contacts (comma + space separated ", ")</label>
+                            <input id="editcontacts" type="text" value={this.state.contacts} name="contacts" onChange={(x) => this.doChange(x)} />
+                            <label htmlFor="editthresholda">Level A Threshold</label>
+                            <input id="editthresholda" type="text" value={this.state.thresholda} name="thresholda" onChange={(x) => this.doChange(x)} />
+                            <label htmlFor="editthresholdaa">Level AA Threshold</label>
+                            <input id="editthresholdaa" type="text" value={this.state.thresholdaa} name="thresholdaa" onChange={(x) => this.doChange(x)} />
+                            <input id="editpasscode" type="hidden" value={this.state.passcode} name="passcode" onChange={(x) => this.doChange(x)} />
+                            <label htmlFor="editpremium">Premium?</label>
+                            <input id="editpremium" type="checkbox" value={this.state.premium} name="premium" onChange={(x) => this.doChange(x)} />
+                            <button onClick={() => this.doEdit()}>Submit</button>
+                            <button onClick={() => this.deleteSite(this.state.slug)} style={{ backgroundColor: 'red', color: 'white', float: 'right' }}>Delete Site</button>
+                        </div>
+                    </div>
                     <div className="card">
                         <h2>Onboard a site</h2>
                         <label htmlFor="url">Site URL</label>
@@ -187,8 +275,9 @@ class Admin extends React.Component {
                         <input id="thresholda" type="text" value={this.state.thresholda} name="thresholda" onChange={(x) => this.doChange(x)} />
                         <label htmlFor="thresholdaa">Level AA Threshold</label>
                         <input id="thresholdaa" type="text" value={this.state.thresholdaa} name="thresholdaa" onChange={(x) => this.doChange(x)} />
-                        <label htmlFor="passcode">Passcode</label>
-                        <input id="passcode" type="text" value={this.state.passcode} name="passcode" onChange={(x) => this.doChange(x)} />
+                        <input id="passcode" type="hidden" value={this.state.passcode} name="passcode" onChange={(x) => this.doChange(x)} />
+                        <label htmlFor="premium">Premium?</label>
+                        <input id="premium" type="checkbox" value={this.state.premium} name="premium" onChange={(x) => this.doChange(x)} />
                         <button onClick={() => this.onboard()}>Submit</button>
                         <p>{this.state.error}</p>
                         <h2>Add Lighthouse Scan</h2>
@@ -217,7 +306,7 @@ class Admin extends React.Component {
                                    <a target="_blank" href={link}>{x.url}</a>
                                    <a target="_blank" class="btn" href={"/qa" + link}>QA</a>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
-                                   <button onClick={() => this.deleteSite(x.slug)}>Delete</button>
+                                   <button onClick={() => this.editSite(x.slug)}>Edit</button>
                                </div> 
                             )
                             }

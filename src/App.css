@@ -635,3 +635,39 @@ input, select, option, textarea {
 .card {
   position: relative;
 }
+
+.modal {
+  position: absolute;
+  top: -200%;
+  left: 20%;
+  height: fit-content;
+  width: 60%;
+  background-color: white;
+  z-index: 99999;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.modalInner {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.modalOverlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.3;
+  z-index: 9999;
+  display: none;
+}
+
+#premium, #editpremium {
+  width: 12px;
+}
