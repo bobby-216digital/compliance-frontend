@@ -402,11 +402,14 @@ strong {
 
 .contact-wrapper {
   max-width: 300px;
-  margin: 0 auto;
 }
 
 .contact-form {
   margin: 0 auto !important;
+}
+
+.contact-form h2 {
+  margin-bottom: 0;
 }
 
 input, select, option, textarea {

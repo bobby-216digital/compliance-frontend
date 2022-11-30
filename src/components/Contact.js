@@ -20,7 +20,8 @@ class ContactForm extends React.Component {
             url: "",
             email: "",
             note: "",
-            type: ""
+            type: "learn",
+            phone: ""
         };
     }
 
@@ -45,7 +46,8 @@ class ContactForm extends React.Component {
                 "url": `${this.state.url}`,
                 "email": `${this.state.email}`,
                 "type": `${this.state.type}`,
-                "note": `${this.state.note}`
+                "notes": `${this.state.note}`,
+                "phone": `${this.state.phone}`
             })
         })
             .then(data => {
@@ -61,11 +63,14 @@ class ContactForm extends React.Component {
             <div className="contact-form card">
                 <fieldset>
                     <legend><h2>Contact Us</h2></legend>
+                    <p>Fill out the form below if you'd like us to reach out, or <a href="/schedule">click here to schedule a call directly.</a></p>
                     <div className="contact-wrapper">
                         <label htmlFor="url">Website</label>
                         <input type="text" name="url" id="url" value={this.props.url ? this.props.url : this.state.url} onChange={(x) => this.doChange(x)} />
                         <label htmlFor="email">Email Address</label>
                         <input type="text" name="email" id="email"  value={this.state.email} onChange={(x) => this.doChange(x)}/>
+                        <label htmlFor="phone">Phone Number</label>
+                        <input type="text" name="phone" id="phone"  value={this.state.phone} onChange={(x) => this.doChange(x)}/>
                         <label htmlFor="type">Inquiry Type</label>
                         <select name="type" id="type" onChange={(x) => this.doChange(x)}>
                             <option value="learn">I'd like to learn more about a11y.Radar</option>
@@ -75,7 +80,7 @@ class ContactForm extends React.Component {
                             <option value="general">Something else</option>
                         </select>
                         <label htmlFor="note">Notes</label>
-                        <textarea rows="8" name="note" id="note" value={this.state.notes} onChange={(x) => this.doChange(x)} />
+                        <textarea rows="8" name="note" id="note" value={this.state.note} onChange={(x) => this.doChange(x)} />
                         <button onClick={() => this.doSubmit()}>Submit</button>
                     </div>
                     

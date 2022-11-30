@@ -19,7 +19,8 @@ class Admin extends React.Component {
             lhurl: "",
             lhscore: "",
             premium: false,
-            modalOpen: false
+            modalOpen: false,
+            oldContacts: ''
         }
 
         this.doAuth = this.doAuth.bind(this);
@@ -191,7 +192,8 @@ class Admin extends React.Component {
                 thresholda: siteData.thresholda,
                 thresholdaa: siteData.thresholdaa,
                 contacts: siteData.contacts.join(", "),
-                modalOpen: true
+                modalOpen: true,
+                oldContacts: siteData.contacts
             })
         });
     }
@@ -209,7 +211,8 @@ class Admin extends React.Component {
                 "premium": `${this.state.premium}`,
                 "contacts": `${this.state.contacts}`,
                 "thresholda": `${this.state.thresholda}`,
-                "thresholdaa": `${this.state.thresholdaa}`
+                "thresholdaa": `${this.state.thresholdaa}`,
+                "oldcontacts": `${this.state.oldContacts}`
             })
         })
         .then(response => response.json())
