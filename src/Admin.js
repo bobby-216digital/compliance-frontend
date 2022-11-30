@@ -309,7 +309,7 @@ class Admin extends React.Component {
                                 return(
                                <div key={i} className="siteLine">
                                     {x.newscan == true ? "⏰" : ""}
-                                    {x.overthreshold == true ? "🔴" : "🟢"}
+                                    {x.overthreshold == true ? "🔴" : ""}
                                    <a target="_blank" href={link}>{x.url}</a>
                                    <a target="_blank" class="btn" href={"/qa" + link}>QA</a>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
@@ -334,7 +334,7 @@ class Admin extends React.Component {
                                 return(
                                <div key={i} className="siteLine">
                                    {x.newscan == true ? "⏰" : ""}
-                                   {x.overthreshold == true ? "🔴" : "🟢"}
+                                   {x.overthreshold == true ? "🔴" : ""}
                                    <a target="_blank" href={"/qa" + link}>{x.url}</a>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
                                    <button onClick={() => this.deleteSite(x.slug)}>Delete</button>
