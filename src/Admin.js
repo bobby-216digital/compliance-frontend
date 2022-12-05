@@ -333,9 +333,11 @@ class Admin extends React.Component {
                                  if (x.freq >= 200) {
                                 return(
                                <div key={i} className="siteLine">
-                                   {x.newscan == true ? "⏰" : ""}
-                                   {x.overthreshold == true ? "🔴" : ""}
-                                   <a target="_blank" href={"/qa" + link}>{x.url}</a>
+                                   <div class="siteUrl">
+                                        {x.newscan == true ? "⏰" : ""}
+                                        {x.overthreshold == true ? "🔴" : ""}
+                                       <a target="_blank" href={"/qa" + link}>{x.url}</a>
+                                    </div>
                                    <button onClick={() => this.newScan(x.url)}>New Scan</button>
                                    <button onClick={() => this.deleteSite(x.slug)}>Delete</button>
                                </div> 
