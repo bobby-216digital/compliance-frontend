@@ -581,6 +581,7 @@ input, select, option, textarea {
 
 .siteLine {
   height: 42px;
+  border-bottom: 1px solid #EEE;
 }
 
 .siteLine button, .siteLine .btn {
