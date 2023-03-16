@@ -35,6 +35,16 @@ class Admin extends React.Component {
         this.doEdit = this.doEdit.bind(this);
     }
 
+    componentDidMount() {
+        if (this.state.isAuth == false) {
+            if (document.cookie = "auth=yes") {
+                this.setState({
+                    isAuth: true
+                })
+            }
+        }
+    }
+
     componentDidUpdate() {
         this.initData();
     }
@@ -65,6 +75,7 @@ class Admin extends React.Component {
             .then(data => {
                 console.log(data);
                 if (data.status === 200) {
+                    document.cookie = "auth=yes"
                     this.setState({
                         isAuth: true,
                         error: false
