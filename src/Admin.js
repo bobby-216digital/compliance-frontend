@@ -37,7 +37,7 @@ class Admin extends React.Component {
 
     componentDidMount() {
         if (this.state.isAuth == false) {
-            if (document.cookie = "auth=yes") {
+            if (document.cookie == "auth=yes") {
                 this.setState({
                     isAuth: true
                 })
