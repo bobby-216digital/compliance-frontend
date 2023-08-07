@@ -51,9 +51,12 @@ export default class QuickAudit extends React.Component {
                 waveCount += x.count;
             })
         } else {
-            data.wave[data.wave.length - 1].issues.map((x) => {
-                waveCount += x.count;
-            })
+            if (data.wave[data.wave.length - 1]) {
+                data.wave[data.wave.length - 1].issues.map((x) => {
+                    waveCount += x.count;
+                })
+            }
+            
         }
         
         return (
