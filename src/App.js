@@ -79,9 +79,11 @@ class Panel extends React.Component {
         return true
       })
       let waveCount = 0;
-      data.wave[data.wave.length - 1].issues.map((x) => {
-        waveCount = waveCount + x.count
-      })
+      if (data.wave[data.wave.length - 1]) {
+        data.wave[data.wave.length - 1].issues.map((x) => {
+          waveCount = waveCount + x.count
+        })
+      }
       this.setState({
         data: data,
         levels: levels,
