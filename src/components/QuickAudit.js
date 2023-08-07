@@ -14,20 +14,25 @@ class WaveErrors extends React.Component {
         }
         
         console.log(waveIndex, this.props.wave)
-        if (this.props.wave[waveIndex].issues.length > 0) {
-            return (
-                this.props.wave[waveIndex].issues.map((x, i) => {
-                    return(
-                        <div className={i % 2 !== 0 ? "issue odd" : "issue even"}>
-                            <div className="cat">{x.description}</div>
-                            <span className="numIssues">{x.count}</span>
-                        </div> 
-                    )
-                })
-            )
+        if (this.props.wave[waveIndex]) {
+            if (this.props.wave[waveIndex].issues.length > 0) {
+                return (
+                    this.props.wave[waveIndex].issues.map((x, i) => {
+                        return(
+                            <div className={i % 2 !== 0 ? "issue odd" : "issue even"}>
+                                <div className="cat">{x.description}</div>
+                                <span className="numIssues">{x.count}</span>
+                            </div> 
+                        )
+                    })
+                )
+            } else {
+                return (<p>No Wave errors!</p>)
+            }
         } else {
-            return (<p>No Wave errors!</p>)
+            return (<p>Wave error</p>)
         }
+        
     }
 }
 
