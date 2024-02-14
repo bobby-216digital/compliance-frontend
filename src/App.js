@@ -14,7 +14,7 @@ function App(props) {
   console.log(url)
   return (
     <React.Fragment>
-      <Panel url={url} qa={props.qa} date={date} />
+      <Panel url={url} qa={props.qa} date={date} noshow={this.props.noshow} />
     </React.Fragment>
   )
 }
@@ -135,7 +135,7 @@ class Panel extends React.Component {
           <TextCard subtext={"Next Scan Date"} text={data ? nextDate : "X/XX/XXXX"} />
           <div className="card">
             <h2>Outstanding Issues</h2><a href={"/qa/" + data.slug} class="btn reportBtn">View report</a>
-            <IssuePanel sortsite={this.state.sortsite} levels={this.state.levels} issues={this.state.issues} noshow={this.props.noshow} />
+            <IssuePanel sortsite={this.state.sortsite} levels={this.state.levels} issues={this.state.issues} noshow={true} />
           </div>
         </div>
         <div className="two-thirds">
