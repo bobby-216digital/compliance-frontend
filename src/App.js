@@ -121,7 +121,7 @@ class Panel extends React.Component {
       return(<h2>Loading data...</h2>)
     }
     if (this.props.qa == true) {
-      return (<QuickAudit ssIndex={this.state.ssIndex} sortsite={this.state.sortsite} waveCount={this.state.waveCount} data={data} levels={this.state.levels} issues={this.state.issues} />)
+      return (<QuickAudit noshow={this.props.noshow} ssIndex={this.state.ssIndex} sortsite={this.state.sortsite} waveCount={this.state.waveCount} data={data} levels={this.state.levels} issues={this.state.issues} />)
     } else {
     return (
       <React.Fragment>
@@ -135,7 +135,7 @@ class Panel extends React.Component {
           <TextCard subtext={"Next Scan Date"} text={data ? nextDate : "X/XX/XXXX"} />
           <div className="card">
             <h2>Outstanding Issues</h2><a href={"/qa/" + data.slug} class="btn reportBtn">View report</a>
-            <IssuePanel sortsite={this.state.sortsite} levels={this.state.levels} issues={this.state.issues} />
+            <IssuePanel sortsite={this.state.sortsite} levels={this.state.levels} issues={this.state.issues} noshow={this.props.noshow} />
           </div>
         </div>
         <div className="two-thirds">

@@ -6,7 +6,8 @@ class Issue extends React.Component {
             <div tabIndex="0" className={this.props.i % 2 !== 0 ? "issue odd" : "issue even"}>
                 <div className="cat"><div className="chev">&#9660;</div> {this.props.cat}</div>
                 <span className="numIssues">{this.props.numIssues == 50 ? "50+" : this.props.numIssues}</span>
-                <div className="issueDrop">
+                {this.props.noshow ? "" : 
+                    <div className="issueDrop">
                     {this.props.issues.map((x, n) => {
                         return(
                             <div className={n % 2 !== 0 ? "issueInner odd" : "issueInner even"}>
@@ -17,7 +18,8 @@ class Issue extends React.Component {
                             </div>
                         );
                     })}
-                </div>
+                    </div>
+                }
             </div>
         )
     }
