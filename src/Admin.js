@@ -373,7 +373,7 @@ class Admin extends React.Component {
             return (
                 <div className="card">
                     <h1>Admin panel login</h1>
-                    <input type="text" id="pass" name="pass" title="Password" value={this.state.pass} onChange={this.doChange} />
+                    <input type="text" id="pass" name="pass" title="Password" value={this.state.pass} autoComplete="current-password" onChange={this.doChange} />
                     <button onClick={() => this.doAuth()}>Submit</button>
                     <br />
                     <p>{this.state.error}</p>
