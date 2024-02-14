@@ -34,15 +34,15 @@ class IssuePanel extends React.Component {
                 <div className="inner">
                     <h3><strong>{Object.keys(this.props.sortsite.a).length}</strong> Level A<span className="right"># Pages</span></h3>
                     {Object.keys(this.props.sortsite.a) ? Object.keys(this.props.sortsite.a).map((x, i) => {
-                        return (<Issue key={i} i={i} cat={x} numIssues={this.props.sortsite.a[x].length} issues={this.props.sortsite.a[x]} />)
+                        return (<Issue key={i} i={i} cat={x} numIssues={this.props.sortsite.a[x].length} issues={this.props.sortsite.a[x]} noshow={this.props.noshow} />)
                     }) : ""}
                     <h3><strong>{Object.keys(this.props.sortsite.aa).length}</strong> Level AA<span className="right"># Pages</span></h3>
                     {Object.keys(this.props.sortsite.aa) ? Object.keys(this.props.sortsite.aa).map((x, i) => {
-                        return (<Issue key={i} i={i} cat={x} numIssues={this.props.sortsite.aa[x].length} issues={this.props.sortsite.aa[x]} />)
+                        return (<Issue key={i} i={i} cat={x} numIssues={this.props.sortsite.aa[x].length} issues={this.props.sortsite.aa[x]} noshow={this.props.noshow} />)
                     }) : ""}
                     <h3><strong>{Object.keys(this.props.sortsite.aaa).length}</strong> Level AAA<span className="right"># Pages</span></h3>
                     {Object.keys(this.props.sortsite.aaa) ? Object.keys(this.props.sortsite.aaa).map((x, i) => {
-                        return (<Issue key={i} i={i} cat={x} numIssues={this.props.sortsite.aaa[x].length} issues={this.props.sortsite.aaa[x]} />)
+                        return (<Issue key={i} i={i} cat={x} numIssues={this.props.sortsite.aaa[x].length} issues={this.props.sortsite.aaa[x]} noshow={this.props.noshow} />)
                     }) : ""}
                 </div>
             </div>
