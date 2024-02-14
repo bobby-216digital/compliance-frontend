@@ -14,7 +14,7 @@ function App(props) {
   console.log(url)
   return (
     <React.Fragment>
-      <Panel url={url} qa={props.qa} date={date} noshow={this.props.noshow} />
+      <Panel url={url} qa={props.qa} date={date} noshow={props.noshow} />
     </React.Fragment>
   )
 }
