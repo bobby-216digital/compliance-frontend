@@ -343,7 +343,7 @@ class Admin extends React.Component {
                                 {this.state.data ? this.state.data.slice(0).reverse().map((x, i) => {
                             let link = x ? "/" + x.slug : "";
                             if (x) {
-                                 if (x.freq >= 200) {
+                                 if (x.freq >= 998) {
                                 return(
                                <div key={i} className="siteLine">
                                    <div class="siteUrl">
