@@ -316,7 +316,7 @@ class Admin extends React.Component {
                                     {this.state.data ? this.state.data.map((x, i) => {
                             let link = x ? "/" + x.slug : "";
                             if (x) {
-                                if (x.freq < 200) {
+                                if (x.freq < 400) {
                                 return(
                                <div key={i} className="siteLine">
                                     <div className="siteUrl">
